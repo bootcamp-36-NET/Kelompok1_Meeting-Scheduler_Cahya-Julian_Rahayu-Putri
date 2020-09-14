@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gqqgxd0iQ8VDty9K5Ou4kMKLJSALz7ppNA4Yca6PMizYAgIKC8XeW8+6YU7NTgBcLJIPdD4pfC+Q9HTWEu+YhA==",
+  "dgSpecHash": "sgqnR2tolinjzszvI8STibDZnN/Yuuc0ZrbKRvVXDHOOoYM0z/CNd4QYtjE52hMlJ/UEbIPqluUSPN7enomCow==",
   "success": true,
   "projectFilePath": "D:\\FileKerja\\MII\\ProjectNetCore\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",
