@@ -10,6 +10,7 @@ namespace API.Models
     [Table("tb_m_user")]
     public class User : IdentityUser
     {
+        public Employee Employee { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
     }
 }
