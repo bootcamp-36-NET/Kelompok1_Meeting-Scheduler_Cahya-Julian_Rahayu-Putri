@@ -16,7 +16,6 @@ namespace API.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Booking> Bookings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
