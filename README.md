@@ -6,4 +6,5 @@
 - Selasa (15/09):
 1. Membuat Register, Login, dan Verify
 2. Revisi UseCase, ERD, & BPMN (kalo ada request u/ direvisi)
-2. On progress (Department - Division - Employee - Booking - Room - Tampilan)
+3. On progress (Department - Division - Employee - Booking - Room - Tampilan)
+4. Kesulitan Memakai GitDesktop => salah mengoperasikan membuat codingan hilang :(
