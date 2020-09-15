@@ -18,5 +18,6 @@ namespace API.Models
         public bool isDelete { get; set; }
 
         public ICollection<Employee> Employees { get; set; }
+        public ICollection<Division> Divisions { get; set; }
     }
 }

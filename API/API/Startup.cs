@@ -31,6 +31,7 @@ namespace API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LearnNetCore")));
             services.AddScoped<DepartmentRepo>();
+            services.AddScoped<DivisionRepo>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<MyContext>();
