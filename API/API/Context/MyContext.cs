@@ -15,6 +15,7 @@ namespace API.Context
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Division> Divisions { get; set; }
         //public DbSet<Room> Rooms { get; set; }
         //public DbSet<Booking> Bookings { get; set; }
 
@@ -44,6 +45,10 @@ namespace API.Context
             //           .WithOne(u => u.Room)
             //           .HasForeignKey<Room>(u => u.Id);
 
+            builder.Entity<Division>()
+                .HasOne(ur => ur.Department)
+                .WithMany(b => b.Divisions)
+                .HasForeignKey(ur => ur.DepartmentId);
 
             base.OnModelCreating(builder);
         }

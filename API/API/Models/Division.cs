@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    [Table("tb_department")]
-    public class Department : BaseModel
+    [Table("tb_division")]
+
+    public class Division : BaseModel
     {
+
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTimeOffset CreateDate { get; set; }
@@ -17,7 +19,8 @@ namespace API.Models
         public DateTimeOffset UpdateDate { get; set; }
         public bool isDelete { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
-        public ICollection<Division> Divisions { get; set; }
+        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
+
     }
 }

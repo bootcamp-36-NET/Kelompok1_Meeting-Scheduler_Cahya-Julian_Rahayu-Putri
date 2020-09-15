@@ -12652,19 +12652,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Cornelia Putri\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FileKerja\\MII\\ProjectNetCore\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\API.csproj",
+      "projectUniqueName": "D:\\MII-BC36-Git\\TA3\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\FileKerja\\MII\\ProjectNetCore\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\FileKerja\\MII\\ProjectNetCore\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\obj\\",
+      "projectPath": "D:\\MII-BC36-Git\\TA3\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Cornelia Putri\\.nuget\\packages\\",
+      "outputPath": "D:\\MII-BC36-Git\\TA3\\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Cornelia Putri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12720,7 +12724,6 @@
             "version": "[2.1.1, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
@@ -12731,16 +12734,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }
