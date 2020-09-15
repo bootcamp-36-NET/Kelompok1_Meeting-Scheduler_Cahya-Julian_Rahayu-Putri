@@ -57,7 +57,7 @@ namespace Client
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=AccountWeb}/{action=Login}/{id?}");
+                    template: "{controller=Dashboard}/{action=Index}/{id?}");
             });
         }
     }

@@ -59,7 +59,7 @@ namespace Client.Controllers
                 var buffer = System.Text.Encoding.UTF8.GetBytes(jsonUserVM);
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var resTask = client.PostAsync("Account/verify/", byteContent);
+                var resTask = client.PostAsync("accounts/verify/", byteContent);
                 resTask.Wait();
                 var result = resTask.Result;
                 if (result.IsSuccessStatusCode)

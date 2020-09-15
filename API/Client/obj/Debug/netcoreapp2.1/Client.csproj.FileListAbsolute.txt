@@ -43,3 +43,5 @@ D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Register.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Controllers\Profile.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Verify.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Dashboard\Index.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Profile.cshtml.g.cs
