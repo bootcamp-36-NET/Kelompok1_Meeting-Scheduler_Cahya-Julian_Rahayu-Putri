@@ -16,6 +16,7 @@ namespace API.Models
         public DateTimeOffset DeleteDate { get; set; }
         public DateTimeOffset UpdateDate { get; set; }
         public bool isDelete { get; set; }
+        public string Username { get; set; }
 
         public User User { get; set; }
         public Department Department { get; set; }

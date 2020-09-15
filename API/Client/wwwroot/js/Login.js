@@ -1,4 +1,5 @@
 ﻿function myLogin() {
+    debugger;
 	var validate = new Object();
 	validate.Email = $('#Username').val();
 	validate.Password = $('#password').val();
@@ -51,6 +52,7 @@ function Register() {
 };
 
 function Verify() {
+    debugger;
     var validate = {
         SecurityStamp : $('#verifyId').val(),
         Email: $('#email').val()

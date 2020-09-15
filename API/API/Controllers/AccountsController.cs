@@ -69,17 +69,17 @@ namespace API.Controllers
             var role = new UserRole
             {
                 UserId = user.Id,
-                RoleId = "2"
+                RoleId = "1"
             };
             _context.UserRoles.AddAsync(role);
-            //var employee = new Employee
-            //{
-            //    Id = user.Id,
-            //    Username = user.UserName,
-            //    CreateDate = DateTimeOffset.Now,
-            //    isDelete = false
-            //};
-            //_context.employees.Add(employee);
+            var employee = new Employee
+            {
+                Id = user.Id,
+                Username = user.UserName,
+                CreateDate = DateTimeOffset.Now,
+                isDelete = false
+            };
+            _context.Employees.Add(employee);
             _context.SaveChanges();
             return Ok("Registered successfully");
 
@@ -219,54 +219,6 @@ namespace API.Controllers
             _context.Users.Remove(getId);
             _context.SaveChanges();
             return Ok("Deleted succesfully");
-        }
-
-        [HttpPost]
-        public IActionResult Create(UserViewModel userVM)
-        {
-            if (ModelState.IsValid)
-            {
-                var randomCode = randomGenerator.GenerateRandom();
-                var verifyMsg = " Verification code: " + randomCode + "\n\n"
-                          + "Enter this code to your application \n\n\n Thank you ";
-
-                client.Port = 587;
-                client.Host = "smtp.gmail.com";
-                client.EnableSsl = true;
-                client.Timeout = TimeSpan.FromMinutes(10).Minutes;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(verification.EmailV, verification.PasswordV);
-
-                MailMessage mailMessage = new MailMessage("cjdeveloper123@gmail.com", userVM.Email, "Create Email", verifyMsg);
-                mailMessage.BodyEncoding = UTF8Encoding.UTF8;
-                mailMessage.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                client.Send(mailMessage);
-                var pwHashed = BCrypt.Net.BCrypt.HashPassword(userVM.Password, 12);
-                var user = new User
-                {
-                    UserName = userVM.Username,
-                    Email = userVM.Email,
-                    SecurityStamp = randomCode.ToString(),
-                    PasswordHash = pwHashed,
-                    PhoneNumber = userVM.Phone,
-                    EmailConfirmed = false,
-                    PhoneNumberConfirmed = false,
-                    TwoFactorEnabled = false,
-                    LockoutEnabled = false,
-                    AccessFailedCount = 0,
-                };
-                _context.Users.Add(user);
-                var userRole = new UserRole
-                {
-                    UserId = user.Id,
-                    RoleId = "2"
-                };
-                _context.UserRoles.Add(userRole);
-                _context.SaveChanges();
-                return Ok("Successfully Created");
-            }
-            return BadRequest("Failed. Please try again");
         }
 
         [HttpPut("{id}")]
