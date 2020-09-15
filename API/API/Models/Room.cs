@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    //[Table("tb_room")]
-    //public class Room
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
+    [Table("tb_room")]
+    public class Room
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
 
-    //    public Booking Booking { get; set; }
-    //}
+        public Booking Booking { get; set; }
+    }
 }

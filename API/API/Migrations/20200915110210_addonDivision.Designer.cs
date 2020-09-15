@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200914142924_addDataPutri")]
-    partial class addDataPutri
+    [Migration("20200915110210_addonDivision")]
+    partial class addonDivision
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,20 +23,36 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.Booking", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTimeOffset>("CreateDate");
+
+                    b.Property<DateTimeOffset>("DeleteDate");
+
+                    b.Property<string>("EmployeeId");
+
+                    b.Property<DateTimeOffset>("EndDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Time");
+
+                    b.Property<DateTimeOffset>("UpdateDate");
+
+                    b.Property<bool>("isDelete");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Booking");
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("tb_m_booking");
                 });
 
             modelBuilder.Entity("API.Models.Department", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTimeOffset>("CreateDate");
 
@@ -63,9 +79,15 @@ namespace API.Migrations
 
                     b.Property<DateTimeOffset>("DeleteDate");
 
-                    b.Property<int?>("DepartmentId");
+                    b.Property<string>("DepartmentId");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("Gender");
 
                     b.Property<DateTimeOffset>("UpdateDate");
+
+                    b.Property<string>("Username");
 
                     b.Property<bool>("isDelete");
 
@@ -73,7 +95,7 @@ namespace API.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("tb_employee");
+                    b.ToTable("tb_m_employee");
                 });
 
             modelBuilder.Entity("API.Models.Role", b =>
@@ -94,11 +116,16 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.Room", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BookingId");
 
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookingId");
 
                     b.ToTable("tb_room");
                 });
@@ -154,6 +181,13 @@ namespace API.Migrations
                     b.ToTable("tb_m_userrole");
                 });
 
+            modelBuilder.Entity("API.Models.Booking", b =>
+                {
+                    b.HasOne("API.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+                });
+
             modelBuilder.Entity("API.Models.Employee", b =>
                 {
                     b.HasOne("API.Models.Department", "Department")
@@ -169,9 +203,8 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.Room", b =>
                 {
                     b.HasOne("API.Models.Booking", "Booking")
-                        .WithOne("Room")
-                        .HasForeignKey("API.Models.Room", "Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("BookingId");
                 });
 
             modelBuilder.Entity("API.Models.UserRole", b =>

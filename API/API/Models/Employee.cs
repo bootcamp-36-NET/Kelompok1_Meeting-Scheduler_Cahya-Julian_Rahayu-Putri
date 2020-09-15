@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    [Table("tb_employee")]
+    [Table("tb_m_employee")]
     public class Employee
     {
         public string Id { get; set; }
@@ -17,6 +17,8 @@ namespace API.Models
         public DateTimeOffset UpdateDate { get; set; }
         public bool isDelete { get; set; }
         public string Username { get; set; }
+        public string FullName { get; set; }
+        public string Gender { get; set; }
 
         public User User { get; set; }
         public Department Department { get; set; }

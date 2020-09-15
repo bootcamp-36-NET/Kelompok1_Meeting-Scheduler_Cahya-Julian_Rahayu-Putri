@@ -21,7 +21,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{Id}")]
-        public async Task<ActionResult<int>> Update(int id, Department entity)
+        public async Task<ActionResult<string>> Update(string id, Department entity)
         {
             var getId = await _repo.GetById(id);
             getId.Name = entity.Name;

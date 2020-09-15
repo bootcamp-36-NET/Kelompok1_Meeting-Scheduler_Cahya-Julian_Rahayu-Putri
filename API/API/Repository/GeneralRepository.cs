@@ -20,26 +20,27 @@ namespace API.Repository
             _context = context;
         }
 
-        public async Task<int> Create(TEntity entity)
+        public async Task<string> Create(TEntity entity)
         {
             entity.CreateDate = DateTimeOffset.Now;
             entity.isDelete = false;
             await _context.Set<TEntity>().AddAsync(entity); //input data o db
             var CreateItem = await _context.SaveChangesAsync(); //save changes in db
-            return CreateItem;
+            return CreateItem.ToString();
         }
 
-        public async Task<int> Delete(int Id)
+        public async Task<string> Delete(string Id)
         {
             var item = await GetById(Id);
             if (item == null)
             {
-                return 0;
+                return null;
             }
             item.isDelete = true;
             item.DeleteDate = DateTimeOffset.Now;
             _context.Entry(item).State = EntityState.Modified;
-            return await _context.SaveChangesAsync();
+            var delete = await _context.SaveChangesAsync();
+            return delete.ToString();
         }
 
         public virtual async Task<List<TEntity>> GetAll()
@@ -52,7 +53,7 @@ namespace API.Repository
             return null;
         }
 
-        public async Task<TEntity> GetById(int Id)
+        public async Task<TEntity> GetById(string Id)
         {
             var item = await _context.Set<TEntity>().FindAsync(Id);
             if (item == null)
@@ -62,11 +63,12 @@ namespace API.Repository
             return item;
         }
 
-        public async Task<int> Update(TEntity entity)
+        public async Task<string> Update(TEntity entity)
         {
             entity.UpdateDate = DateTimeOffset.Now;
             _context.Entry(entity).State = EntityState.Modified;
-            return await _context.SaveChangesAsync();
+            var edit = await _context.SaveChangesAsync();
+            return edit.ToString();
         }
     }
 }

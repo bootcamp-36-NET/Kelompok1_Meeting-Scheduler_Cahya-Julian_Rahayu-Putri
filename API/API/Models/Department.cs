@@ -10,7 +10,7 @@ namespace API.Models
     [Table("tb_department")]
     public class Department : BaseModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public DateTimeOffset CreateDate { get; set; }
         public DateTimeOffset DeleteDate { get; set; }

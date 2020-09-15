@@ -76,6 +76,9 @@ namespace API.Controllers
             {
                 Id = user.Id,
                 Username = user.UserName,
+                FullName = registerVM.FullName,
+                Address = registerVM.Address,
+                Gender = registerVM.Gender,
                 CreateDate = DateTimeOffset.Now,
                 isDelete = false
             };

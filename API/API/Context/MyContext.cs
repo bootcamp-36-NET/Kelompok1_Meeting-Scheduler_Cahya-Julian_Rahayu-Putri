@@ -15,9 +15,8 @@ namespace API.Context
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
-        //public DbSet<Room> Rooms { get; set; }
-        //public DbSet<Booking> Bookings { get; set; }
-        // public DbSet<Room> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Room> Rooms { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -37,14 +36,8 @@ namespace API.Context
 
             builder.Entity<Employee>()
                 .HasOne<User>(e => e.User)
-                        .WithOne(u => u.Employee)
-                        .HasForeignKey<Employee>(u => u.Id);
-
-            //builder.Entity<Room>()
-            //   .HasOne<Booking>(e => e.Booking)
-            //           .WithOne(u => u.Room)
-            //           .HasForeignKey<Room>(u => u.Id);
-
+                .WithOne(u => u.Employee)
+                .HasForeignKey<Employee>(u => u.Id);
 
             base.OnModelCreating(builder);
         }
