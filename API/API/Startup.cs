@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using API.Models;
+using API.Repository.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,8 @@ namespace API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LearnNetCore")));
+            services.AddScoped<DepartmentRepo>();
+
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<MyContext>();
             services.AddIdentityCore<User>().AddEntityFrameworkStores<MyContext>();
