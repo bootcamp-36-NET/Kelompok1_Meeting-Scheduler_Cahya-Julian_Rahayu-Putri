@@ -1,16 +1,16 @@
-# Progress Kelompok 1:
-- Senin (14/09):
-1. Membuat UseCase
-2. Membuat ERD
-3. Membuat BPMN
+# Progress Group 1 (Meeting Scheduler):
+- Monday (14/09):
+1. Added UseCase
+2. Added ERD
+3. Added BPMN
 
-- Selasa (15/09):
-1. Membuat Register, Login, dan Verify
-2. Revisi UseCase, ERD, & BPMN
-3. Revisi entity, bases, repo
-4. Kesulitan Memakai GitDesktop => salah mengoperasikan membuat codingan hilang :(
-5. Department, Division API
+- Tuesday (15/09):
+1. Created Register, Login, dan Verify. (BackEnd and FrontEnd)
+2. Revised UseCase, ERD, & BPMN
+3. Revised entity, bases, & repo
+4. Gotten trouble while using GitDesktop => misoperation makes coding lost :(
+5. Added Department, Division. (API)
 
-- Rabu(16/09):
-1. Membuat Register, Login, Verify.(API Revisi)
-2. Membuat Register, Login, Verify, Profile. (Client)
+- Wednesday (16/09):
+1. Added Register, Login, & Verify.(API Revised Edition)
+2. Added Register, Login, Verify, & Profile. (Client)
