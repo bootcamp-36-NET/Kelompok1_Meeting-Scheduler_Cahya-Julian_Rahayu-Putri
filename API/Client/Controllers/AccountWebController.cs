@@ -152,9 +152,9 @@ namespace Client.Controllers
                         var account = new VerifyViewModel
                         {
                             Id = handler.Claims.Where(p => p.Type == "id").Select(s => s.Value).FirstOrDefault(),
-                            Username = handler.Claims.Where(p => p.Type == "username").Select(s => s.Value).FirstOrDefault(),
+                            Username = handler.Claims.Where(p => p.Type == "uname").Select(s => s.Value).FirstOrDefault(),
                             Email = handler.Claims.Where(p => p.Type == "email").Select(s => s.Value).FirstOrDefault(),
-                            Phone = handler.Claims.Where(p => p.Type == "Phone").Select(s => s.Value).FirstOrDefault(),
+                            Phone = handler.Claims.Where(p => p.Type == "phone").Select(s => s.Value).FirstOrDefault(),
                             RoleName = handler.Claims.Where(p => p.Type == "RoleName").Select(s => s.Value).FirstOrDefault(),
                             Adddress = handler.Claims.Where(p => p.Type == "address").Select(s => s.Value).FirstOrDefault(),
                             Gender = handler.Claims.Where(p=>p.Type == "gender").Select(s=>s.Value).FirstOrDefault(),
@@ -165,10 +165,10 @@ namespace Client.Controllers
                         if (account.RoleName == "Admin" || account.RoleName == "Sales" || account.RoleName == "HR")
                         {
                             HttpContext.Session.SetString("id", account.Id);
-                            HttpContext.Session.SetString("Phone", account.Phone);
+                            HttpContext.Session.SetString("phone", account.Phone);
                             HttpContext.Session.SetString("address", account.Adddress);
                             HttpContext.Session.SetString("gender", account.Gender);
-                            HttpContext.Session.SetString("username", account.Username);
+                            HttpContext.Session.SetString("uname", account.Username);
                             HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
                             HttpContext.Session.SetString("fullName", account.FullName);
@@ -209,6 +209,28 @@ namespace Client.Controllers
         {
             HttpContext.Session.Clear();
             return Redirect("/login");
+        }
+        [Route("select2")]
+        public JsonResult LoadDepart()
+        {
+            IEnumerable<Department> departments = null;
+            var resTask = client.GetAsync("department");  //departments nya ini dari si controller api
+            resTask.Wait();
+
+            var result = resTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<IList<Department>>();
+                readTask.Wait();
+                departments = readTask.Result;
+
+            }
+            else
+            {
+                departments = Enumerable.Empty<Department>();
+                ModelState.AddModelError(string.Empty, "Server Error try Again");
+            }
+            return Json(departments);
         }
 
     }

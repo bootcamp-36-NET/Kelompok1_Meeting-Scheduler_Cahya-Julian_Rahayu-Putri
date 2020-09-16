@@ -29,7 +29,6 @@ D:\MII-BC36-Git\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\ob
 D:\MII-BC36-Git\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
 D:\MII-BC36-Git\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.dll
 D:\MII-BC36-Git\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.pdb
-D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.RazorAssemblyInfo.cache
@@ -44,3 +43,4 @@ D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\bin\Debug\netcoreapp2.1\API.dll
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\bin\Debug\netcoreapp2.1\API.pdb
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.RazorTargetAssemblyInfo.cache
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache

@@ -111,6 +111,7 @@ namespace API.Controllers
                 getUser.Phone = userEmail.User.PhoneNumber;
                 getUser.Adddress = getBiodata.Address;
                 getUser.Gender = getBiodata.Gender;
+                getUser.FullName = getBiodata.FullName;
                 
                 await _context.SaveChangesAsync();
                 return StatusCode(200, getUser);
@@ -156,9 +157,9 @@ namespace API.Controllers
                         {
                             new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                             new Claim("id", user.Id),
-                            new Claim("username", user.Username),
+                            new Claim("uname", user.Username),
                             new Claim("email", user.Email),
-                            new Claim("Phone", user.Phone),
+                            new Claim("phone", user.Phone),
                             new Claim("RoleName", user.RoleName),
                             new Claim("address", user.Adddress),
                             new Claim("gender", user.Gender),
