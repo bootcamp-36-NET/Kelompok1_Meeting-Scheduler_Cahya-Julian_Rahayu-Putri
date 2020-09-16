@@ -131,7 +131,7 @@ namespace Client.Controllers
             return Redirect("/register");
         }
         [Route("validate")]
-        public IActionResult Validate(UserViewModel userVM)
+        public IActionResult Validate(VerifyViewModel userVM)
         {
             if (userVM.Username == null)
             {
