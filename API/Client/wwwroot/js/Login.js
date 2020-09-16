@@ -3,7 +3,6 @@
 	var validate = new Object();
 	validate.Email = $('#Username').val();
 	validate.Password = $('#password').val();
-	//console.log(validate);
 	$.ajax({
 		type: 'POST',
         url: "/validate/",
@@ -20,15 +19,20 @@
 };
 
 function Register() {
+    debugger;
     var confirm = $("#confirmPassword").val();
     var pw = $("#password").val();
     if (confirm == pw) {
         var dataRegister = {
+            fullName: $("#fullName").val(),
+            gender: $("#gender").val(),
+            address: $("#address").val(),
             username: $("#username").val(),
             email: $("#email").val(),
             password: $("#password").val(),
             phone: $("#phone").val(),
-            confirmPassword: $("#confirmPassword").val()
+            confirmPassword: $("#confirmPassword").val(),
+            departmentId: $("#departmentId").val()
         };
         console.log(dataRegister);
         $.ajax({
@@ -47,7 +51,7 @@ function Register() {
             console.log(result);
         })
     } else {
-        //toastr.warning(result.msg)
+        toastr.warning(result.msg)
     }
 };
 
@@ -65,7 +69,6 @@ function Verify() {
         dataType: "JSON",
         data: validate
     }).then((result) => {
-        //window.location.href = "/dashboard";
         if (result.status == true) {
             window.location.href = "/profile";
         } else {
@@ -73,4 +76,38 @@ function Verify() {
         }
         console.log(result);
     });
-}
+};
+
+//dropdown data dept
+var selopDepartment = {
+    getAllDepartment: function (idAja) {
+
+        $.ajax({
+            url: '/DepartmentWeb/LoadDepartments',
+            method: 'get',
+            contentType: 'application/json',
+            success: function (res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $("#divName").select2();
+                    var dynamicSelect = document.getElementById("divName");
+                    Array.from(res).forEach(element => {
+                        var newOption = document.createElement("option")
+                        newOption.setAttribute("id", element.Id);
+                        newOption.setAttribute("value", element.Name);
+                        newOption.setAttribute("name", "Name");
+                        newOption.text = element.Name;
+                        dynamicSelect.add(newOption);
+                    });
+                    //console.log(res);
+                    if (idAja != 0) {
+                        $("#divName option[id='" + idAja + "']").attr("selected", "selected");
+                    }
+                } else {
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+};

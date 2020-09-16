@@ -68,10 +68,13 @@ namespace Client.Controllers
                     if (data != "")
                     {
                         var json = JsonConvert.DeserializeObject(data).ToString();
-                        var account = JsonConvert.DeserializeObject<UserViewModel>(json);
+                        var account = JsonConvert.DeserializeObject<VerifyViewModel>(json);
                         if (account.RoleName == "Admin" || account.RoleName == "Sales" || account.RoleName == "HR")
                         {
                             HttpContext.Session.SetString("id", account.Id);
+                            HttpContext.Session.SetString("phone", account.Phone);
+                            HttpContext.Session.SetString("address", account.Adddress);
+                            HttpContext.Session.SetString("gender", account.Gender);
                             HttpContext.Session.SetString("uname", account.Username);
                             HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
@@ -145,19 +148,24 @@ namespace Client.Controllers
                     if (data != "")
                     {
                         var handler = new JwtSecurityTokenHandler().ReadJwtToken(data);
-                        var account = new UserViewModel
+                        var account = new VerifyViewModel
                         {
                             Id = handler.Claims.Where(p => p.Type == "id").Select(s => s.Value).FirstOrDefault(),
                             Username = handler.Claims.Where(p => p.Type == "username").Select(s => s.Value).FirstOrDefault(),
                             Email = handler.Claims.Where(p => p.Type == "email").Select(s => s.Value).FirstOrDefault(),
                             Phone = handler.Claims.Where(p => p.Type == "Phone").Select(s => s.Value).FirstOrDefault(),
-                            RoleName = handler.Claims.Where(p => p.Type == "RoleName").Select(s => s.Value).FirstOrDefault()
+                            RoleName = handler.Claims.Where(p => p.Type == "RoleName").Select(s => s.Value).FirstOrDefault(),
+                            Adddress = handler.Claims.Where(p => p.Type == "address").Select(s => s.Value).FirstOrDefault(),
+                            Gender = handler.Claims.Where(p=>p.Type == "gender").Select(s=>s.Value).FirstOrDefault()
 
                         };
 
                         if (account.RoleName == "Admin" || account.RoleName == "Sales" || account.RoleName == "HR")
                         {
                             HttpContext.Session.SetString("id", account.Id);
+                            HttpContext.Session.SetString("phone", account.Phone);
+                            HttpContext.Session.SetString("address", account.Adddress);
+                            HttpContext.Session.SetString("gender", account.Gender);
                             HttpContext.Session.SetString("uname", account.Username);
                             HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
