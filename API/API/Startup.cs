@@ -32,6 +32,7 @@ namespace API
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LearnNetCore")));
             services.AddScoped<DepartmentRepo>();
             services.AddScoped<DivisionRepo>();
+            services.AddScoped<BookingRepo>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<MyContext>();

@@ -12,6 +12,7 @@ namespace API.Models
         public string Id { get; set; }
         public string Name { get; set; }
 
+        public string BookingId { get; set; }
         public Booking Booking { get; set; }
     }
 }
