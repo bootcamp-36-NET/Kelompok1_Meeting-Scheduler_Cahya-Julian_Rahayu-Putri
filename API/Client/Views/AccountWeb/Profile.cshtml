@@ -6,8 +6,9 @@
     var gender = Context.Session.GetString("gender");
     var phone = Context.Session.GetString("Phone");
     var address = Context.Session.GetString("address");
-    var uname = Context.Session.GetString("uname");
+    var uname = Context.Session.GetString("username");
     var mail = Context.Session.GetString("email");
+    var fullName = Context.Session.GetString("fullName");
     var level = Context.Session.GetString("lvl");
 
     if (mail == null)
@@ -28,7 +29,7 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            @uname.ToUpperInvariant()
+                            @fullName.ToUpper()
                         </h5>
                         <h6>
                             @level.ToUpper()
@@ -57,6 +58,30 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
+                                    <label>Full Name</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@fullName</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Gender</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@gender</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Phone Number</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@phone</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
                                     <label>User Name</label>
                                 </div>
                                 <div class="col-md-9">
@@ -77,6 +102,14 @@
                                 </div>
                                 <div class="col-md-9">
                                     <p>@level</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Address</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@address</p>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +141,8 @@ else
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            @uname
+                            @fullName.ToUpperInvariant()
+
                         </h5>
                         <h6>
                             @level
@@ -137,6 +171,30 @@ else
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
+                                    <label>Full Name</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@fullName</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Gender</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@gender</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Phone Number</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@phone</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
                                     <label>User Name</label>
                                 </div>
                                 <div class="col-md-9">
@@ -159,6 +217,14 @@ else
                                     <p>@level</p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Address</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p>@address</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,6 +233,7 @@ else
     </div>
 }
 @section scriptdbAdmin{
+    @*<script src="~/js/ClientJS/EmployeeJS.js"></script>*@
     <script type="text/javascript"></script>
 }
 
