@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using API.Bases;
 using API.Models;
 using API.Repository.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    //[Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class DepartmentController : BaseController<Department, DepartmentRepo>

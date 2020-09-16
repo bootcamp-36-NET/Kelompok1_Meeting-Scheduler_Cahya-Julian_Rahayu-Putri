@@ -1,7 +1,6 @@
 ﻿var arrDepart = [];
 
 function myLogin() {
-    debugger;
 	var validate = new Object();
 	validate.Email = $('#Username').val();
 	validate.Password = $('#password').val();
@@ -21,10 +20,14 @@ function myLogin() {
 };
 
 function Register() {
-    debugger;
     var confirm = $("#confirmPassword").val();
     var pw = $("#password").val();
     if (confirm == pw) {
+        var b = document.getElementById("deptName");
+        var id1 = b.options[b.selectedIndex].id;
+        var myData = {
+            id: id1
+        };
         var dataRegister = {
             fullName: $("#fullName").val(),
             gender: $("#gender").val(),
@@ -34,7 +37,7 @@ function Register() {
             password: $("#password").val(),
             phone: $("#phone").val(),
             confirmPassword: $("#confirmPassword").val(),
-            departmentId: $("#departmentId").val()
+            departmentId: myData.id
         };
         console.log(dataRegister);
         $.ajax({
@@ -81,64 +84,39 @@ function Verify() {
 };
 
 //dropdown data dept
-//var selopDepartment = {
-//    getAllDepartment: function (idAja) {
-
-//        $.ajax({
-//            url: '/DepartmentWeb/LoadDepartments',
-//            method: 'get',
-//            contentType: 'application/json',
-//            success: function (res, status, xhr) {
-//                if (xhr.status == 200 || xhr.status == 201) {
-//                    $("#divName").select2();
-//                    var dynamicSelect = document.getElementById("divName");
-//                    Array.from(res).forEach(element => {
-//                        var newOption = document.createElement("option")
-//                        newOption.setAttribute("id", element.Id);
-//                        newOption.setAttribute("value", element.Name);
-//                        newOption.setAttribute("name", "Name");
-//                        newOption.text = element.Name;
-//                        dynamicSelect.add(newOption);
-//                    });
-//                    //console.log(res);
-//                    if (idAja != 0) {
-//                        $("#divName option[id='" + idAja + "']").attr("selected", "selected");
-//                    }
-//                } else {
-//                }
-//            },
-//            error: function (err) {
-//                console.log(err);
-//            }
-//        });
-//    }
-//};
-
-
-function LoadDepart(element) {
-    //debugger;
-    if (arrDepart.length === 0) {
+var selopDepartment = {
+    getAllDepartment: function (idAja) {
         $.ajax({
-            type: "Get",
-            url: "/Department/LoadDepart",
-            success: function (data) {
-                arrDepart = data;
-                renderDepart(element);
+            url: '/select2/',
+            method: 'get',
+            contentType: 'application/json',
+            success: function (res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $("#deptName").select2();
+                    var dynamicSelect = document.getElementById("deptName");
+                    Array.from(res).forEach(element => {
+                        var newOption = document.createElement("option")
+                        newOption.setAttribute("id", element.id);
+                        newOption.setAttribute("value", element.name);
+                        newOption.setAttribute("name", "Name");
+                        newOption.text = element.name;
+                        dynamicSelect.add(newOption);
+                    });
+                    //console.log(res);
+                    if (idAja != 0) {
+                        $("#deptName option[id='" + idAja + "']").attr("selected", "selected");
+                    }
+                } else {
+                }
+            },
+            error: function (err) {
+                console.log(err);
             }
         });
     }
-    else {
-        renderDepart(element);
-    }
-}
+};
 
-function renderDepart(element) {
-    var $option = $(element);
-    $option.empty();
-    $option.append($('<option/>').val('0').text('Select Department').hide());
-    $.each(arrDepart, function (i, val) {
-        $option.append($('<option/>').val(val.id).text(val.name))
-    });
-}
-
-LoadDepart($('#DepartOption'))
+$(document).ready(function () {
+    selopDepartment.getAllDepartment();
+    $(".select2").select2();
+});

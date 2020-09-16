@@ -89,3 +89,4 @@ D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.dll
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.pdb
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.g.cshtml.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.cshtml.g.cs
