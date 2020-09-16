@@ -148,6 +148,7 @@ namespace API.Controllers
                     user.RoleName = masuk.Role.Name;
                     user.Adddress = getBiodata.Address;
                     user.Gender = getBiodata.Gender;
+                    user.FullName = getBiodata.FullName;
                     
                     if (user.Username != null)
                     {
@@ -160,7 +161,8 @@ namespace API.Controllers
                             new Claim("Phone", user.Phone),
                             new Claim("RoleName", user.RoleName),
                             new Claim("address", user.Adddress),
-                            new Claim("gender", user.Gender)
+                            new Claim("gender", user.Gender),
+                            new Claim("fullName", user.FullName)
                         };
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 

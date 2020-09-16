@@ -78,6 +78,7 @@ namespace Client.Controllers
                             HttpContext.Session.SetString("uname", account.Username);
                             HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
+                            HttpContext.Session.SetString("fullName", account.FullName);
                             if (account.RoleName == "Admin")
                             {
                                 return Json(new { status = true, msg = "Well done. Your account has been verified"});
@@ -156,31 +157,33 @@ namespace Client.Controllers
                             Phone = handler.Claims.Where(p => p.Type == "Phone").Select(s => s.Value).FirstOrDefault(),
                             RoleName = handler.Claims.Where(p => p.Type == "RoleName").Select(s => s.Value).FirstOrDefault(),
                             Adddress = handler.Claims.Where(p => p.Type == "address").Select(s => s.Value).FirstOrDefault(),
-                            Gender = handler.Claims.Where(p=>p.Type == "gender").Select(s=>s.Value).FirstOrDefault()
+                            Gender = handler.Claims.Where(p=>p.Type == "gender").Select(s=>s.Value).FirstOrDefault(),
+                            FullName = handler.Claims.Where(p=>p.Type == "fullName").Select(s=>s.Value).FirstOrDefault()
 
                         };
 
                         if (account.RoleName == "Admin" || account.RoleName == "Sales" || account.RoleName == "HR")
                         {
                             HttpContext.Session.SetString("id", account.Id);
-                            HttpContext.Session.SetString("phone", account.Phone);
+                            HttpContext.Session.SetString("Phone", account.Phone);
                             HttpContext.Session.SetString("address", account.Adddress);
                             HttpContext.Session.SetString("gender", account.Gender);
-                            HttpContext.Session.SetString("uname", account.Username);
+                            HttpContext.Session.SetString("username", account.Username);
                             HttpContext.Session.SetString("email", account.Email);
                             HttpContext.Session.SetString("lvl", account.RoleName);
+                            HttpContext.Session.SetString("fullName", account.FullName);
                             HttpContext.Session.SetString("JWToken", "Bearer " + data);
                             if (account.RoleName == "Admin")
                             {
-                                return Json(new { status = true, msg = "Login Successfully !", acc = "Admin" });
+                                return Json(new { status = true, msg = "Login Successfully !"});
                             }
                             else if (account.RoleName == "Sales")
                             {
-                                return Json(new { status = true, msg = "Login Successfully !", acc = "Sales" });
+                                return Json(new { status = true, msg = "Login Successfully !"});
                             }
                             else
                             {
-                                return Json(new { status = true, msg = "Login Successfully !", acc = "HR" });
+                                return Json(new { status = true, msg = "Login Successfully !"});
                             }
                         }
                         else

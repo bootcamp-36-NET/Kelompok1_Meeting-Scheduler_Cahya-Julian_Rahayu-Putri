@@ -118,6 +118,9 @@ namespace API.ViewModels
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
         [Display(Name = "Username")]
         public string Username { get; set; }
 
@@ -134,5 +137,8 @@ namespace API.ViewModels
         [Display(Name = "Role Name")]
         public string RoleName { get; set; }
 
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
     }
 }
