@@ -13,4 +13,4 @@
 
 - Rabu(16/09):
 1. Membuat Register, Login, Verify.(API Revisi)
-2. 
+2. Membuat Register, Login, Verify, Profile. (Client)
