@@ -8,17 +8,38 @@
 <form id="formLogin" role="form">
     <div class="textbox">
         <i class="fas fa-user"></i>
+        <input type="text" id="fullName" placeholder="Full Name">
+    </div>
+    <div class="textbox">
+        <i class="fas fa-user"></i>
         <input type="text" id="username" placeholder="Username">
     </div>
-
     <div class="textbox">
         <i class="fas fa-address-card"></i>
         <input type="email" id="email" placeholder="Email">
     </div>
-
+    <div class="textbox">
+        <i class="fas fa-user"></i>
+        <select class="select2" style="width: 100%;" id="gender" name="gender" required>
+            <option value="0" hidden selected> -- Choose Gender -- </option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="textbox">
+        <i class="fas fa-address-card"></i>
+        <input type="text" id="address" placeholder="Address">
+    </div>
     <div class="textbox">
         <i class="fas fa-phone"></i>
         <input type="number" id="phone" placeholder="Phone Number">
+    </div>
+    <div class="textbox">
+        <i class="fas fa-user"></i>
+        <select class="select2" style="width: 100%;" id="departmentId" name="departmentId" required>
+            <option value="0" hidden selected> -- Choose Department -- </option>
+            <option value="7cec5172-9190-47b2-a3a7-d35d6199528b">Development</option>
+        </select>
     </div>
 
     <div class="textbox">

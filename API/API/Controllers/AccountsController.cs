@@ -69,7 +69,7 @@ namespace API.Controllers
             var role = new UserRole
             {
                 UserId = user.Id,
-                RoleId = "1"
+                RoleId = "2"
             };
             _context.UserRoles.AddAsync(role);
             var employee = new Employee
@@ -79,6 +79,7 @@ namespace API.Controllers
                 FullName = registerVM.FullName,
                 Address = registerVM.Address,
                 Gender = registerVM.Gender,
+                DepartmentId = registerVM.DepartmentId,
                 CreateDate = DateTimeOffset.Now,
                 isDelete = false
             };
@@ -96,16 +97,21 @@ namespace API.Controllers
                 var getCode = _context.Users.Where(U => U.SecurityStamp == userViewModel.SecurityStamp).Any();
                 if (!getCode)
                 {
-                    return BadRequest(new { msg = "Verification proccess is failed. Please enter the invalid code" });
+                    return BadRequest(new { msg = "Verification proccess is failed. Please enter the valid code" });
                 }
                 var userEmail = _context.UserRoles.Include("Role").Include("User").Where(U => U.User.Email == userViewModel.Email).FirstOrDefault();
-                var getUser = new UserViewModel();
+                var getBiodata = _context.Employees.Where(Q => Q.Id == userEmail.User.Id).FirstOrDefault();
+                var getUser = new VerifyViewModel();
                 userEmail.User.SecurityStamp = null;
                 userEmail.User.EmailConfirmed = true;
                 getUser.RoleName = userEmail.Role.Name;
                 getUser.Username = userEmail.User.UserName;
                 getUser.Id = userEmail.User.Id;
                 getUser.Email = userEmail.User.Email;
+                getUser.Phone = userEmail.User.PhoneNumber;
+                getUser.Adddress = getBiodata.Address;
+                getUser.Gender = getBiodata.Gender;
+                
                 await _context.SaveChangesAsync();
                 return StatusCode(200, getUser);
             }
@@ -133,12 +139,16 @@ namespace API.Controllers
                 }
                 else
                 {
-                    var user = new UserViewModel();
+                    var getBiodata = _context.Employees.Where(Q => Q.Id == masuk.User.Id).FirstOrDefault();
+                    var user = new VerifyViewModel();
                     user.Id = masuk.User.Id;
                     user.Username = masuk.User.UserName;
                     user.Email = masuk.User.Email;
                     user.Phone = masuk.User.PhoneNumber;
                     user.RoleName = masuk.Role.Name;
+                    user.Adddress = getBiodata.Address;
+                    user.Gender = getBiodata.Gender;
+                    
                     if (user.Username != null)
                     {
                         var Claims = new List<Claim>
@@ -148,7 +158,9 @@ namespace API.Controllers
                             new Claim("username", user.Username),
                             new Claim("email", user.Email),
                             new Claim("Phone", user.Phone),
-                            new Claim("RoleName", user.RoleName)
+                            new Claim("RoleName", user.RoleName),
+                            new Claim("address", user.Adddress),
+                            new Claim("gender", user.Gender)
                         };
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
 

@@ -64,6 +64,10 @@ namespace API.ViewModels
         [Display(Name ="Address")]
         public string Address { get; set; }
 
+        [Required]
+        [Display(Name = "Department Id")]
+        public string DepartmentId { get; set; }
+
     }
     public class UserViewModel
     {
@@ -103,5 +107,32 @@ namespace API.ViewModels
 
         [Display(Name = "Role Name")]
         public string Name { get; set; }
+    }
+    public class VerifyViewModel
+    {
+        [Display(Name = "Id")]
+        public string Id { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone Number")]
+        public string Phone { get; set; }
+
+        [Display(Name = "Address")]
+        public string Adddress { get; set; }
+
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
+
+        [Display(Name = "Role Name")]
+        public string RoleName { get; set; }
+
     }
 }
