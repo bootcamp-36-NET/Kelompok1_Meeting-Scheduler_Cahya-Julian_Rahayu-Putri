@@ -1,4 +1,6 @@
-﻿function myLogin() {
+﻿var arrDepart = [];
+
+function myLogin() {
     debugger;
 	var validate = new Object();
 	validate.Email = $('#Username').val();
@@ -79,35 +81,64 @@ function Verify() {
 };
 
 //dropdown data dept
-var selopDepartment = {
-    getAllDepartment: function (idAja) {
+//var selopDepartment = {
+//    getAllDepartment: function (idAja) {
 
+//        $.ajax({
+//            url: '/DepartmentWeb/LoadDepartments',
+//            method: 'get',
+//            contentType: 'application/json',
+//            success: function (res, status, xhr) {
+//                if (xhr.status == 200 || xhr.status == 201) {
+//                    $("#divName").select2();
+//                    var dynamicSelect = document.getElementById("divName");
+//                    Array.from(res).forEach(element => {
+//                        var newOption = document.createElement("option")
+//                        newOption.setAttribute("id", element.Id);
+//                        newOption.setAttribute("value", element.Name);
+//                        newOption.setAttribute("name", "Name");
+//                        newOption.text = element.Name;
+//                        dynamicSelect.add(newOption);
+//                    });
+//                    //console.log(res);
+//                    if (idAja != 0) {
+//                        $("#divName option[id='" + idAja + "']").attr("selected", "selected");
+//                    }
+//                } else {
+//                }
+//            },
+//            error: function (err) {
+//                console.log(err);
+//            }
+//        });
+//    }
+//};
+
+
+function LoadDepart(element) {
+    //debugger;
+    if (arrDepart.length === 0) {
         $.ajax({
-            url: '/DepartmentWeb/LoadDepartments',
-            method: 'get',
-            contentType: 'application/json',
-            success: function (res, status, xhr) {
-                if (xhr.status == 200 || xhr.status == 201) {
-                    $("#divName").select2();
-                    var dynamicSelect = document.getElementById("divName");
-                    Array.from(res).forEach(element => {
-                        var newOption = document.createElement("option")
-                        newOption.setAttribute("id", element.Id);
-                        newOption.setAttribute("value", element.Name);
-                        newOption.setAttribute("name", "Name");
-                        newOption.text = element.Name;
-                        dynamicSelect.add(newOption);
-                    });
-                    //console.log(res);
-                    if (idAja != 0) {
-                        $("#divName option[id='" + idAja + "']").attr("selected", "selected");
-                    }
-                } else {
-                }
-            },
-            error: function (err) {
-                console.log(err);
+            type: "Get",
+            url: "/Department/LoadDepart",
+            success: function (data) {
+                arrDepart = data;
+                renderDepart(element);
             }
         });
     }
-};
+    else {
+        renderDepart(element);
+    }
+}
+
+function renderDepart(element) {
+    var $option = $(element);
+    $option.empty();
+    $option.append($('<option/>').val('0').text('Select Department').hide());
+    $.each(arrDepart, function (i, val) {
+        $option.append($('<option/>').val(val.id).text(val.name))
+    });
+}
+
+LoadDepart($('#DepartOption'))
