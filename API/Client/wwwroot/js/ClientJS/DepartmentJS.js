@@ -45,9 +45,9 @@ $(document).ready(function () {
                 "render": function (data, type, row) {
                     //console.log(row);
                     $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + row.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
+                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + data.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + row.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
+                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + data.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
                 }
             },
         ],
@@ -110,7 +110,7 @@ function ClearScreen() {
 }
 
 function GetById(id) {
-    // debugger;
+    debugger;
     $.ajax({
         url: "/Department/GetById/",
         data: { id: id }
@@ -125,9 +125,9 @@ function GetById(id) {
 }
 
 function Save() {
-    // debugger;
+    debugger;
     var Dept = new Object();
-    Dept.Id = 0;
+    Dept.Id = null;
     Dept.Name = $('#Name').val();
     $.ajax({
         type: 'POST',
@@ -136,7 +136,8 @@ function Save() {
         dataType: "JSON",
         data: Dept
     }).then((result) => {
-        if (result.statusCode === 200) {
+        debugger;
+        if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -153,10 +154,10 @@ function Save() {
 }
 
 function Update() {
-    //  debugger;
+    debugger;
     var Dept = new Object();
-    Dept.id = $('#Id').val();
-    Dept.name = $('#Name').val();
+    Dept.Id = $('#Id').val();
+    Dept.Name = $('#Name').val();
     $.ajax({
         type: 'POST',
         url: "/Department/InsertOrUpdate/",
@@ -165,7 +166,7 @@ function Update() {
         data: Dept
     }).then((result) => {
         debugger;
-        if (result.statusCode === 200) {
+        if (result.statusCode == 200) {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -189,16 +190,16 @@ function Delete(id) {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
-        if (result.value) {
-            // debugger;
+    }).then((resultSwal) => {
+        if (resultSwal.value) {
+            debugger;
             $.ajax({
                 url: "/Department/Delete/",
                 data: { id: id }
             }).then((result) => {
-                //   debugger;
-                if (result.statusCode === 200) {
-                    //     debugger;
+                debugger;
+                if (result.statusCode == 200) {
+                    debugger;
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
