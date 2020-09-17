@@ -42,12 +42,13 @@ $(document).ready(function () {
             {
                 "sortable": false,
                 "data": "id",
-                "render": function (data, type, row) {
-                    //console.log(row);
+                "render": function (data, type, row, meta) {
+                    console.log(row);
+                    console.log(data);
                     $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + data.id + ')" ><i class="fa fa-lg fa-edit"></i></button>'
+                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + meta.row + ')" ><i class="fa fa-lg fa-edit"></i></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + data.id + ')" ><i class="fa fa-lg fa-times"></i></button>'
+                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + meta.row + ')" ><i class="fa fa-lg fa-times"></i></button>'
                 }
             },
         ],
@@ -109,11 +110,12 @@ function ClearScreen() {
     $('#add').show();
 }
 
-function GetById(id) {
+function GetById(idrow) {
     debugger;
+    var getId = table.row(idrow).data().id;
     $.ajax({
         url: "/Department/GetById/",
-        data: { id: id }
+        data: { id: getId }
     }).then((result) => {
         debugger;
         $('#Id').val(result.id);
@@ -193,9 +195,10 @@ function Delete(id) {
     }).then((resultSwal) => {
         if (resultSwal.value) {
             debugger;
+            var getId = table.row(id).data().id;
             $.ajax({
                 url: "/Department/Delete/",
-                data: { id: id }
+                data: { id: getId }
             }).then((result) => {
                 debugger;
                 if (result.statusCode == 200) {

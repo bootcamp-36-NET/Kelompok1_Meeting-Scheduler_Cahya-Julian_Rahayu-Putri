@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -19,18 +20,18 @@ namespace Client.Controllers
 
         public IActionResult Index()
         {
-            //if (HttpContext.Session.GetString("lvl") == "Admin")
-            //{
+        //    if (HttpContext.Session.GetString("lvl") == "Admin")
+        //    {
             return View();
-            //}
-            //return Redirect("/notfound");
+        //    }
+        //    return Redirect("/notfound");
         }
 
         public JsonResult LoadDepart()
         {
             IEnumerable<Department> departments = null;
-            //var token = HttpContext.Session.GetString("token");             //tambahan
-            //http.DefaultRequestHeaders.Add("Authorization", token);         //tambahan
+            var token = HttpContext.Session.GetString("JWToken");
+            http.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = http.GetAsync("department");  //departments nya ini dari si controller api
             resTask.Wait();
 
@@ -59,8 +60,8 @@ namespace Client.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                //    var token = HttpContext.Session.GetString("token");
-                //    http.DefaultRequestHeaders.Add("Authorization", token);
+                var token = HttpContext.Session.GetString("JWToken");
+                http.DefaultRequestHeaders.Add("Authorization", token);
                 if (departments.Id == null)
                 {
                     var result = http.PostAsync("department", byteContent).Result;
@@ -80,31 +81,28 @@ namespace Client.Controllers
             }
         }
 
-        public IActionResult GetById(string Id)
+        public JsonResult GetById(string id)
         {
-            Department departments = null;
-            //    var token = HttpContext.Session.GetString("token");
-            //    http.DefaultRequestHeaders.Add("Authorization", token);
-            var resTask = http.GetAsync("department/" + Id);
-            resTask.Wait();
+            Department department = null;
+            var token = HttpContext.Session.GetString("JWToken");
+            http.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = http.GetAsync("department/" + id);
+            restTask.Wait();
 
-            var result = resTask.Result;
+            var result = restTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                departments = JsonConvert.DeserializeObject<Department>(json);
+                var readTask = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                department = JsonConvert.DeserializeObject<Department>(readTask);
             }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Server Error.");
-            }
-            return Json(departments, new Newtonsoft.Json.JsonSerializerSettings());
+            return Json(department);
         }
+
 
         public JsonResult Delete(string id)
         {
-            //var token = HttpContext.Session.GetString("token");                     //tambahan
-            //http.DefaultRequestHeaders.Add("Authorization", token);                 //tambahan
+            var token = HttpContext.Session.GetString("JWToken");
+            http.DefaultRequestHeaders.Add("Authorization", token);
             var result = http.DeleteAsync("department/" + id).Result;
             return Json(result);
         }

@@ -72,7 +72,7 @@ using Client.Models;
             WriteLiteral("\r\n<h1>Register</h1>\r\n");
             EndContext();
             BeginContext(115, 1907, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c8934ddb1a84577923c38b5b3098cbd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f50dc5ea9a13487cac32b0238ff25c81", async() => {
                 BeginContext(148, 598, true);
                 WriteLiteral(@"
     <div class=""textbox"">
@@ -93,7 +93,7 @@ using Client.Models;
             ");
                 EndContext();
                 BeginContext(746, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc3f845ab23f486cbd45f50dd13f0a6e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c28253c6a6b43e1adde9dc1b9906efd", async() => {
                     BeginContext(780, 21, true);
                     WriteLiteral(" -- Choose Gender -- ");
                     EndContext();
@@ -121,7 +121,7 @@ using Client.Models;
                 WriteLiteral("\r\n            ");
                 EndContext();
                 BeginContext(824, 31, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf10673a1476407fa0b1f4b006c3e9a4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1b2ea40688a4e338a200e1f79473d12", async() => {
                     BeginContext(842, 4, true);
                     WriteLiteral("Male");
                     EndContext();
@@ -143,7 +143,7 @@ using Client.Models;
                 WriteLiteral("\r\n            ");
                 EndContext();
                 BeginContext(869, 33, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca20ce27ac0045a99080233fc29e73b2", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "14e8f3b3677146cf9d0522b1bb0aae47", async() => {
                     BeginContext(887, 6, true);
                     WriteLiteral("Female");
                     EndContext();
@@ -179,7 +179,7 @@ using Client.Models;
             ");
                 EndContext();
                 BeginContext(1408, 61, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f358440158d34be0b931d5f5ac0ef16b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6312a04007664754af701030a98df4db", async() => {
                     BeginContext(1435, 25, true);
                     WriteLiteral(" -- Choose Department -- ");
                     EndContext();
@@ -244,7 +244,7 @@ using Client.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(2168, 37, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3be90cd39cc24b0193b31f7cdc4e6d9c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd73971c401b49dbbc23c3e615702f3d", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

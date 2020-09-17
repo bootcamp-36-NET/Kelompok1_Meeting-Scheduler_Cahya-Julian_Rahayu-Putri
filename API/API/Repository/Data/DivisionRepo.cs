@@ -20,10 +20,29 @@ namespace API.Repository.Data
             _context = myContext;
         }
 
+        [HttpGet]
         public override async Task<List<Division>> GetAll()
         {
-            var data = await _context.Division.Include("Department").Where(x => x.isDelete == false).ToListAsync();
-            return data;
+            List<Division> list = new List<Division>();
+            var data = await _context.Divisions.Include("Department").Where(x => x.isDelete == false).ToListAsync();
+            if (data.Count == 0)
+            {
+                return null;
+            }
+            foreach (var division in data)
+            {
+                var emp = new Division()
+                {
+                    Id = division.Id,
+                    Name = division.Name,
+                    DepartmentId = division.Department.Name,
+                    CreateDate = division.CreateDate,
+                    UpdateDate = division.UpdateDate,
+                    DeleteDate = division.DeleteDate
+                };
+                list.Add(emp);
+            }
+            return list;
         }
     }
 }

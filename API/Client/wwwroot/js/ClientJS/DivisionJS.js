@@ -1,14 +1,14 @@
 ﻿var table = null;
 var arrDepart = [];
-
 $(document).ready(function () {
-    table = $("#division1").DataTable({
+    //debugger
+    table = $("#division").DataTable({
         "processing": true,
         "responsive": true,
         "pagination": true,
         "stateSave": true,
         "ajax": {
-            url: "/divisions/LoadDiv",
+            url: "/division/LoadDivision",
             type: "GET",
             dataType: "json",
             dataSrc: "",
@@ -21,20 +21,20 @@ $(document).ready(function () {
                     //return meta.row + 1;
                 }
             },
-            { "data": "name" },
+            { "data": "Name" },
             {
                 "sortable": false,
-                "data": "department.name"
+                "data": "DepartmentId"
             },
             {
-                "data": "createDate",
+                "data": "CreateDate",
                 'render': function (jsonDate) {
                     var date = new Date(jsonDate);
                     return moment(date).format('DD MMMM YYYY, hh:mm');
                 }
             },
             {
-                "data": "updateDate",
+                "data": "UpdateDate",
                 'render': function (jsonDate) {
                     var date = new Date(jsonDate);
                     if (date.getFullYear() != 0001) {
@@ -46,12 +46,13 @@ $(document).ready(function () {
             {
                 "sortable": false,
                 "data": "id",
-                "render": function (data, type, row) {
+                "render": function (data, type, row, meta) {
                     console.log(row);
+                    console.log(data);
                     $('[data-toggle="tooltip"]').tooltip();
-                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + data + ')" ><i class="fa fa-lg fa-edit"></i></button>'
+                    return '<button class="btn btn-outline-warning btn-circle" data-placement="left" data-toggle="tooltip" data-animation="false" title="Edit" onclick="return GetById(' + meta.row + ')" ><i class="fa fa-lg fa-edit"></i></button>'
                         + '&nbsp;'
-                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + data + ')" ><i class="fa fa-lg fa-times"></i></button>'
+                        + '<button class="btn btn-outline-danger btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Delete" onclick="return Delete(' + meta.row + ')" ><i class="fa fa-lg fa-times"></i></button>'
                 }
             }
         ],
@@ -158,11 +159,12 @@ function renderDepart(element) {
 
 LoadDepart($('#DepartOption'))
 
-function GetById(id) {
+function GetById(idrow) {
     debugger;
+    var getId = table.row(idrow).data().Id;
     $.ajax({
         url: "/division/GetById/",
-        data: { id: id }
+        data: { id: getId } //id pertama dicontroller getbyid, yg kedua dari parameter/ var
     }).then((result) => {
         debugger;
         $('#Id').val(result.id);
@@ -175,9 +177,9 @@ function GetById(id) {
 }
 
 function Save() {
-    //debugger;
+    debugger;
     var Div = new Object();
-    Div.Id = 0;
+    Div.Id = null;
     Div.Name = $('#Name').val();
     Div.DepartmentID = $('#DepartOption').val();
     $.ajax({
@@ -243,14 +245,15 @@ function Delete(id) {
         confirmButtonText: 'Yes, delete it!',
     }).then((resultSwal) => {
         if (resultSwal.value) {
-            //debugger;
+            debugger;
+            var getId = table.row(id).data().Id;
             $.ajax({
                 url: "/division/Delete/",
-                data: { id: id }
+                data: { id: getId }
             }).then((result) => {
-                //debugger;
+                debugger;
                 if (result.statusCode === 200) {
-                    //debugger;
+                    debugger;
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
