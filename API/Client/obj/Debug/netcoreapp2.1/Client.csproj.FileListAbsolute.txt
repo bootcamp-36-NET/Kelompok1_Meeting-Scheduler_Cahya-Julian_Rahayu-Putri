@@ -35,13 +35,11 @@ D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\bin\Debug\netcoreapp2.1\Client.pdb
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\bin\Debug\netcoreapp2.1\Client.Views.dll
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\bin\Debug\netcoreapp2.1\Client.Views.pdb
-D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.csproj.CoreCompileInputs.cache
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.Views.pdb
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.dll
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.pdb
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Login.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Register.cshtml.g.cs
-D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Controllers\Profile.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Verify.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Dashboard\Index.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\AccountWeb\Profile.cshtml.g.cs
@@ -90,3 +88,6 @@ D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.pdb
 D:\MII-BC36-Git\TA LAGI Ya Tuhan\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.g.cshtml.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Department\Index.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\RoomWeb\Index.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\BookingWeb\Index.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.csproj.CoreCompileInputs.cache

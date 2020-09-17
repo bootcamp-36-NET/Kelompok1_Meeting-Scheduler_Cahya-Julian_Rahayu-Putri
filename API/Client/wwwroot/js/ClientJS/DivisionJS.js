@@ -133,9 +133,9 @@
     }
 };
 
-var editDiv;
+var editRoom;
 $("#btn-edit").click(function () {
-    formDivision.editSaveDivision(editDiv);
+    formDivision.editSaveDivision(editRoom);
 });
 tableDivision.create();
 
@@ -219,7 +219,7 @@ var formDivision = {
             };
         });
     }, editSaveDivision: function (editD) {
-        editDiv = editD;
+        editRoom = editD;
         var myName = {
             Name: document.getElementById("divName2").value
         };
@@ -248,7 +248,7 @@ var formDivision = {
         });
     }, setEditData: function (editD) {
         //debugger;
-        editDiv = editD; // new, supaya id bisa dibawa ke fungsi editForm
+        editRoom = editD; // new, supaya id bisa dibawa ke fungsi editForm
         //console.log(editD);
         $.ajax({
             url: '/DivisionWeb/GetById/' + editD,
@@ -300,7 +300,7 @@ $(document).on('click', '#btn-save', function (e) {
 });
 
 //dropdown data dept
-var selopDepartment = {
+var selopEmployee = {
     getAllDepartment: function (idAja) {
 
         $.ajax({
@@ -367,7 +367,7 @@ var selopDepartmentEdit = {
     }
 };
 $(document).ready(function () {
-    selopDepartment.getAllDepartment();
+    selopEmployee.getAllDepartment();
     selopDepartmentEdit.getAllDepartment();
     $(".select2").select2();
 });
