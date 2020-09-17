@@ -49,7 +49,8 @@ namespace Client.Controllers
             }
             return Json(departments);
         }
-        public IActionResult InsertOrUpdate(Department departments, string id_merk)
+
+        public IActionResult InsertOrUpdate(Department departments, string id)
         {
             try
             {
@@ -58,17 +59,16 @@ namespace Client.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                //var token = HttpContext.Session.GetString("token");                 //tambahan
-                //http.DefaultRequestHeaders.Add("Authorization", token);             //tambahan
-
+                //    var token = HttpContext.Session.GetString("token");
+                //    http.DefaultRequestHeaders.Add("Authorization", token);
                 if (departments.Id == null)
                 {
                     var result = http.PostAsync("department", byteContent).Result;
                     return Json(result);
                 }
-                else if (departments.Id == departments.Id)
+                else if (departments.Id == id)
                 {
-                    var result = http.PutAsync("department/" + departments.Id, byteContent).Result;
+                    var result = http.PutAsync("department/" + id, byteContent).Result;
                     return Json(result);
                 }
 
@@ -80,25 +80,25 @@ namespace Client.Controllers
             }
         }
 
-        public JsonResult GetById(string id)
+        public IActionResult GetById(string Id)
         {
-            Department department = null;
-            //var token = HttpContext.Session.GetString("token");             //tambahan
-            //http.DefaultRequestHeaders.Add("Authorization", token);         //tambahan
-            var resTask = http.GetAsync("department/" + id);
+            Department departments = null;
+            //    var token = HttpContext.Session.GetString("token");
+            //    http.DefaultRequestHeaders.Add("Authorization", token);
+            var resTask = http.GetAsync("department/" + Id);
             resTask.Wait();
+
             var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var getJson = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                department = JsonConvert.DeserializeObject<Department>(getJson);
+                var json = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                departments = JsonConvert.DeserializeObject<Department>(json);
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
+                ModelState.AddModelError(string.Empty, "Server Error.");
             }
-
-            return Json(department);
+            return Json(departments, new Newtonsoft.Json.JsonSerializerSettings());
         }
 
         public JsonResult Delete(string id)
