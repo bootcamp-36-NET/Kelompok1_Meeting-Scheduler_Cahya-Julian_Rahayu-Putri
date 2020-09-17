@@ -24,16 +24,29 @@ namespace API.Controllers
         [HttpPut("{Id}")]
         public async Task<ActionResult<string>> Update(string Id, Booking entity)
         {
-            var getId = await _repo.GetById(Id);
-            getId.Name = entity.Name;
-            getId.Time = entity.Time;
-            getId.Employee = entity.Employee;
-            var data = await _repo.Update(getId);
-            if (data.Equals(null))
+            //var getId = await _repo.GetById(Id);
+            //getId.Name = entity.Name;
+            //getId.Time = entity.Time;
+            //getId.Employee = entity.Employee;
+            //var data = await _repo.Update(getId);
+            //if (data.Equals(null))
+            //{
+            //    return BadRequest("Data is not Update");
+            //}
+            //return Ok("Update Successfull");
+            var upd = await _repo.GetById(Id);
+            if (upd != null)
             {
-                return BadRequest("Data is not Update");
+                upd.Name = entity.Name;
+                upd.Time = entity.Time;
+                upd.EndDate = entity.EndDate;
+                upd.EmployeeId = entity.EmployeeId;
+                //upd.CreateDate = DateTimeOffset.Now;
+                upd.UpdateDate = DateTimeOffset.Now;
+                await _repo.Update(upd);
+                return Ok("data has been updated");
             }
-            return Ok("Update Successfull");
+            return BadRequest("Failed to update data. Please try again.");
         }
     }
 }

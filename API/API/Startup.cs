@@ -33,6 +33,7 @@ namespace API
             services.AddScoped<DepartmentRepo>();
             services.AddScoped<DivisionRepo>();
             services.AddScoped<BookingRepo>();
+            services.AddScoped<RoomRepo>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<MyContext>();
