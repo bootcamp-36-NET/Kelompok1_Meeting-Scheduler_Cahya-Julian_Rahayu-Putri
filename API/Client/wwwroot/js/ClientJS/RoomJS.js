@@ -43,9 +43,9 @@
         });
     }
 };
-var editRoom;
+var editbook;
 $("#btn-edit").click(function () {
-    formRoom.editSaveRoom(editRoom);
+    formRoom.editSaveRoom(editbook);
 });
 tableRoom.create();
 
@@ -109,7 +109,7 @@ var formRoom = {
         });
     }, editSaveRoom: function (editD) {
         //debugger;
-        editRoom = editD;
+        editbook = editD;
         var rooms = new Object();
         rooms.Name = $('#name2').val();
         rooms.BookingId = $('#booking2').val();
@@ -133,7 +133,7 @@ var formRoom = {
             }
         });
     }, setEditData: function (editD) {
-        editRoom = editD; // new, supaya id bisa dibawa ke fungsi editForm
+        editbook = editD; // new, supaya id bisa dibawa ke fungsi editForm
         console.log(editD);
         $.ajax({
             url: '/RoomWeb/GetById/' + editD,

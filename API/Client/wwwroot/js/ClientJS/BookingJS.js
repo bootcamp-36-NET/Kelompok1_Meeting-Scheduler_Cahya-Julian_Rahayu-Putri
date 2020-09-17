@@ -46,14 +46,15 @@
         });
     }
 };
-var edieditRoom$("#btn-edit").click(function () {
-    formRoom.editSaveRoom(edieditRoom
+var editBookings;
+$("#btn-edit").click(function () {
+    formRoom.editSaveRoom(editBookings)
 });
 tableRoom.create();
 
 var formRoom = {
     saveForm: function () {
-        debugger;
+        //debugger;
         //var a = $("#time").val()
         var b = document.getElementById("team");
         var id1 = b.options[b.selectedIndex].id;
@@ -129,7 +130,8 @@ var formRoom = {
         });
     }, editSaveBooking: function (editD) {
         debugger;
-        editBooking editRoom       var b = document.getElementById("team2");
+        editBooking = editbook;
+        var b = document.getElementById("team2");
         var id1 = b.options[b.selectedIndex].id;
         var myData = {
             id: id1
@@ -159,7 +161,7 @@ var formRoom = {
             }
         });
     }, setEditData: function (editD) {
-        editBooking = eeditRoomw, supaya id bisa dibawa ke fungsi editForm
+        editBooking = editBookings, //supaya id bisa dibawa ke fungsi editForm
         console.log(editD);
         $.ajax({
             url: '/BookingWeb/GetById/' + editD,

@@ -133,9 +133,9 @@
     }
 };
 
-var editRoom;
+var editbook;
 $("#btn-edit").click(function () {
-    formDivision.editSaveDivision(editRoom);
+    formDivision.editSaveDivision(editbook);
 });
 tableDivision.create();
 
@@ -219,7 +219,7 @@ var formDivision = {
             };
         });
     }, editSaveDivision: function (editD) {
-        editRoom = editD;
+        editbook = editD;
         var myName = {
             Name: document.getElementById("divName2").value
         };
@@ -248,7 +248,7 @@ var formDivision = {
         });
     }, setEditData: function (editD) {
         //debugger;
-        editRoom = editD; // new, supaya id bisa dibawa ke fungsi editForm
+        editbook = editD; // new, supaya id bisa dibawa ke fungsi editForm
         //console.log(editD);
         $.ajax({
             url: '/DivisionWeb/GetById/' + editD,
