@@ -13,7 +13,7 @@
             method: 'get',
             contentType: 'application/json',
             success: function (res, status, xhr) {
-                debugger;
+                //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#MydataTable').DataTable({
                         data: res,
@@ -27,7 +27,8 @@
                                 }
                             },
                             { title: "Room Name", data: "RoomName" },
-                            {title: "Booking ID", data: "BookingName"},
+                            { title: "Booking Name", data: "BookingName" },
+                            { title: "Approval", data: "isBook" },
                             {
                                 title: "Action", data: null, "sortable": false, render: function (data, type, row) {
                                     return "<button class='btn btn-outline-warning' title='Edit' onclick=formRoom.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
@@ -47,11 +48,11 @@
 };
 var editbook;
 $("#btn-edit").click(function () {
-    formRoom.editSaveRoom(editbook);
+    formBookingEmp.editSaveRoom(editbook);
 });
 tableRoom.create();
 
-var formRoom = {
+var formBookingEmp = {
     saveForm: function () {
         debugger;
         var rooms = new Object();
@@ -120,6 +121,7 @@ var formRoom = {
         var rooms = new Object();
         rooms.Name = $('#name2').val();
         rooms.BookingId = myData.Id;
+        rooms.isBook = $('#isBook').val();
         console.log(rooms);
         $.ajax({
             url: '/RoomWeb/InsertorupdateRoom/' + editD,
@@ -182,7 +184,7 @@ $(document).on('click', '#btn-save', function (e) {
             return new Promise(function (resolve) {
                 if (result) {
                     resolve();
-                    formRoom.saveForm();
+                    formBookingEmp.saveForm();
                 } else {
                     resolve("Please check confirmation button")
                 }

@@ -45,6 +45,7 @@ namespace API.Controllers
                 getId.BookingId = entity.BookingId;
                 getId.CreateDate = DateTimeOffset.Now;
                 getId.UpdateDate = DateTimeOffset.Now;
+                getId.isBook = true;
                 await _repo.Update(getId);
                 return Ok("data has been updated");
             }
@@ -72,7 +73,8 @@ namespace API.Controllers
                     isDelete = item.isDelete,
                     DeleteDate = item.DeleteDate,
                     CreateDate = item.CreateDate,
-                    UpdateDate = item.UpdateDate
+                    UpdateDate = item.UpdateDate,
+                    isBook = item.isBook
                 };
                 list.Add(user);
             }

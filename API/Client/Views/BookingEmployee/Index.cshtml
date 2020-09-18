@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Booking New</h1>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="d-flex flex-row align-content-between justify-content-between">
+            <h5 class="m-0 font-weight-bold text-primary">Form</h5>
+        </div>
+    </div>
+    <div class="container emp-profile">
+        @*<form method="post">*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile-head">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Submission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Rooms</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <!-- Modal Save -->
+                        <div class="modal-body">
+                            <form id="form-booking" role="form">
+                                <input name="id" type="hidden" />
+
+                                <div class="form-group">
+                                    <label>Booking Name : </label>
+                                    <input class="form-control" id="name" name="roomName"
+                                           placeholder="Booking Name" required type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Team Leader : </label>
+                                    <select class="select2" style="width: 100%;" id="team" name="team" required>
+                                        <option value="" hidden selected> -- Choose Team Leader -- </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Time : </label>
+                                    <select class="select2" style="width: 100%;" id="time" name="time" required>
+                                        <option value="" hidden selected> -- Choose Time -- </option>
+                                        <option value="08.00 - 12.00 WIB"> 08.00 - 12.00 </option>
+                                        <option value="13.00 - 16.00 WIB"> 13.00 - 16.00 </option>
+                                        <option value="08.00 - 16.00 WIB"> 08.00 - 16.00 </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date : </label>
+                                    <input class="form-control" id="endDate" name="endDate"
+                                           placeholder="Booking Name" required type="date">
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="btn-save">Save</button>
+                        </div>
+                        <!--End Modal Post-->
+                    </div>
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <!-- Modal Save -->
+                        <div class="modal-body">
+                            <form id="form-room" role="form">
+                                <input name="id" type="hidden" />
+
+                                <div class="form-group">
+                                    <label>Name : </label>
+                                    <input class="form-control" id="name" name="roomName"
+                                           placeholder="Room Name" required type="text">
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="btn-save-room">Save</button>
+                        </div>
+                        <!--End Modal Post-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*</form>*@
+    </div>
+</div>
+
+
+@section scriptdbAdmin{
+    <script src="~/js/ClientJS/BookingEmployeeJS.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            selopEmployee.getAllEmployee();
+            $(".select2").select2();
+            //$("#time").select2({
+            //    teamEmp: [],
+            //    multiple: true,
+            //    placeholder: "Choose Time",
+            //    allowClear: true,
+            //    tokenSeparators: ";"
+            //});
+        });
+    </script>
+}
+
+
+
+

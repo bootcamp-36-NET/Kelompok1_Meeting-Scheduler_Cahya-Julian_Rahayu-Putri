@@ -48,11 +48,11 @@
 };
 var editBookings;
 $("#btn-edit").click(function () {
-    formRoom.editSaveRoom(editBookings)
+    formBookingEmp.editSaveRoom(editBookings)
 });
 tableRoom.create();
 
-var formRoom = {
+var formBookingEmp = {
     saveForm: function () {
         //debugger;
         //var a = $("#time").val()
@@ -206,7 +206,7 @@ $(document).on('click', '#btn-save', function (e) {
             return new Promise(function (resolve) {
                 if (result) {
                     resolve();
-                    formRoom.saveForm();
+                    formBookingEmp.saveForm();
                     //teamEmp = [];
                 } else {
                     resolve("Please check confirmation button")

@@ -151,6 +151,8 @@ namespace API.Migrations
 
                     b.Property<DateTimeOffset>("UpdateDate");
 
+                    b.Property<bool>("isBook");
+
                     b.Property<bool>("isDelete");
 
                     b.HasKey("Id");

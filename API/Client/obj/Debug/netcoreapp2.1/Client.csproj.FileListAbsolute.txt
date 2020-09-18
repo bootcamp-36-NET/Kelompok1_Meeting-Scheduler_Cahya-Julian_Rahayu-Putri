@@ -92,3 +92,4 @@ D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\BookingWeb\Index.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Client.csproj.CoreCompileInputs.cache
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Division\Index.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\BookingEmployee\Index.cshtml.g.cs

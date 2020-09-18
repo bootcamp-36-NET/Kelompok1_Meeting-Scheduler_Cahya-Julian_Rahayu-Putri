@@ -51,7 +51,7 @@
         </div>
     </div>
     <!--End Modal Post-->
-    <!--Modal Edit-->
+    <!--Modal Approval-->
     <div class="modal fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -72,7 +72,15 @@
                         <div class="form-group">
                             <label>Booking Name : </label>
                             <select class="form-control select2" style="width: 100%;" id="bookingId2" name="bookingId" required>
-                                <option value="0" selected> -- Choose Booking -- </option>
+                                <option value="0" hidden selected> -- Choose Booking -- </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Approval : </label>
+                            <select class="form-control select2" style="width: 100%;" id="isBook2" name="isBook" required>
+                                <option value="0" hidden selected> -- Approval -- </option>
+                                <option value="false" > -- No -- </option>
+                                <option value="true" > -- Yes -- </option>
                             </select>
                         </div>
                     </form>

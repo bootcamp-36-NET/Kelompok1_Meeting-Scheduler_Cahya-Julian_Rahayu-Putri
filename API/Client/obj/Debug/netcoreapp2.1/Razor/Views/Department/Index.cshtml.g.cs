@@ -99,7 +99,7 @@ using Client.Models;
                         ");
             EndContext();
             BeginContext(1525, 1547, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5350896a4b5d4bddbd4cd3e9a586c345", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "954bc3f3e9394ed58d0c6d3efdf99560", async() => {
                 BeginContext(1531, 148, true);
                 WriteLiteral("\r\n                            <div class=\"row\">\r\n                                <input type=\"text\" id=\"Id\" name=\"Id\" class=\"form-control\" hidden>\r\n");
                 EndContext();
@@ -157,7 +157,7 @@ using Client.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(4250, 53, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4cfb0c24e0524e6ea86f6ac0389cefdb", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eca74715458a4350acc372ad7bf0ac12", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
