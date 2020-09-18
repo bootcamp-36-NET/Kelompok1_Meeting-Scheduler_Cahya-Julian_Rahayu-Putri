@@ -57,4 +57,3 @@ D:\MII-BC36-Git\TA update 16 jam 14.40 ya\Kelompok1_Meeting-Scheduler_Cahya-Juli
 D:\MII-BC36-Git\TA update 16 jam 14.40 ya\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.dll
 D:\MII-BC36-Git\TA update 16 jam 14.40 ya\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.pdb
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.csproj.CoreCompileInputs.cache
-D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\API\obj\Debug\netcoreapp2.1\API.csprojAssemblyReference.cache

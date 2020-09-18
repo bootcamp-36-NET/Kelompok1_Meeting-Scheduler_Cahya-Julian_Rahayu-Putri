@@ -172,7 +172,7 @@ var formRoom = {
                 //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#name2').val(res.Name);
-                    selopEmployeeEdit.getAllEmployee(res.FullName);
+                    selopBookingEdit.getAllEmployee(res.FullName);
                     $('#time2').val(res.Time);
                     $('#endDate2').val(res.EndDate);
 
@@ -261,7 +261,7 @@ var selopEmployee = {
     }
 };
 
-var selopEmployeeEdit = {
+var selopBookingEdit = {
     getAllEmployee: function (idAja) {
         //debugger;
         $.ajax({

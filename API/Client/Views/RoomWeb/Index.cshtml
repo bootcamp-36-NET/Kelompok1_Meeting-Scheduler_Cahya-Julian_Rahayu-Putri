@@ -71,8 +71,8 @@
                         </div>
                         <div class="form-group">
                             <label>Booking Name : </label>
-                            <select class="form-control select2" style="width: 100%;" id="divName2" name="divisionName" required>
-                                <option value="0" selected> -- Choose Department -- </option>
+                            <select class="form-control select2" style="width: 100%;" id="bookingId2" name="bookingId" required>
+                                <option value="0" selected> -- Choose Booking -- </option>
                             </select>
                         </div>
                     </form>
@@ -99,6 +99,8 @@
 </div>
 @section scriptdbAdmin{
     <script src="~/js/ClientJS/RoomJS.js"></script>
-
+    $(document).ready(function (){
+        selopBookingEdit.getAllBooking();
+    });
     <script type="text/javascript"></script>
 }

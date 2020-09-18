@@ -1,5 +1,6 @@
 ﻿var tableRoom = {
     create: function () {
+        debugger;
         // jika table tersebut datatable, maka clear and dostroy
         if ($.fn.DataTable.isDataTable('#MydataTable')) {
             // table yg sudah dibentuk menjadi datatable harus d rebuild lagi
@@ -12,6 +13,7 @@
             method: 'get',
             contentType: 'application/json',
             success: function (res, status, xhr) {
+                debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#MydataTable').DataTable({
                         data: res,
@@ -24,8 +26,8 @@
                                     return meta.row + meta.settings._iDisplayStart + 1;
                                 }
                             },
-                            { title: "Room Name", data: "Name" },
-                            {title: "Booking Id", data: "BookingId"},
+                            { title: "Room Name", data: "RoomName" },
+                            {title: "Booking ID", data: "BookingName"},
                             {
                                 title: "Action", data: null, "sortable": false, render: function (data, type, row) {
                                     return "<button class='btn btn-outline-warning' title='Edit' onclick=formRoom.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
@@ -109,10 +111,15 @@ var formRoom = {
         });
     }, editSaveRoom: function (editD) {
         //debugger;
+        var b = document.getElementById("bookingId2");
+        var id1 = b.options[b.selectedIndex].id;
+        var myData = {
+            Id: id1
+        };
         editbook = editD;
         var rooms = new Object();
         rooms.Name = $('#name2').val();
-        rooms.BookingId = $('#booking2').val();
+        rooms.BookingId = myData.Id;
         console.log(rooms);
         $.ajax({
             url: '/RoomWeb/InsertorupdateRoom/' + editD,
@@ -141,8 +148,10 @@ var formRoom = {
             contentType: 'application/json',
             dataType: 'json',
             success: function (res, status, xhr) {
+                //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#name2').val(res.Name);
+                    selopBookingEdit.getAllBooking(res.Name);
                     $('#exampleModalCenterEdit').modal('show');
                     //console.log(name);
 
@@ -184,3 +193,37 @@ $(document).on('click', '#btn-save', function (e) {
 
     });
 });
+
+var selopBookingEdit = {
+    getAllBooking: function (idAja) {
+        //debugger;
+        $.ajax({
+            url: '/BookingWeb/LoadBook/',
+            method: 'get',
+            contentType: 'application/json',
+            success: function (res, status, xhr) {
+                //debugger;
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $("#bookingId2").select2();
+                    var dynamicSelect = document.getElementById("bookingId2");
+                    Array.from(res).forEach(element => {
+                        var newOption = document.createElement("option")
+                        newOption.setAttribute("id", element.Id);
+                        newOption.setAttribute("value", element.Name);
+                        newOption.setAttribute("name", "Name");
+                        newOption.text = element.Name;
+                        dynamicSelect.add(newOption);
+                    });
+                    //console.log(res);
+                    if (idAja != 0) {
+                        $("#bookinId2 option[id='" + idAja + "']").attr("selected", "selected");
+                    }
+                } else {
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+};
