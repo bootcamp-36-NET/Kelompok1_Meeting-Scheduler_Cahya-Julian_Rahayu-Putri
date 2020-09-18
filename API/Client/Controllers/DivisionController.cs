@@ -23,46 +23,38 @@ namespace Client.Controllers
             return View();
         }
 
-        public JsonResult LoadDiv()
+        public JsonResult LoadDivision()
         {
             IEnumerable<Division> division = null;
-            //    var token = HttpContext.Session.GetString("token");             //tambahan
-            //    http.DefaultRequestHeaders.Add("Authorization", token);         //tambahan
-            var resTask = http.GetAsync("division"); //controller name api
-            resTask.Wait();
-            var result = resTask.Result;
+                var token = HttpContext.Session.GetString("JWToken");
+                http.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = http.GetAsync("division");
+            restTask.Wait();
+
+            var result = restTask.Result;
             if (result.IsSuccessStatusCode)
             {
                 var readTask = result.Content.ReadAsAsync<IList<Division>>();
                 readTask.Wait();
                 division = readTask.Result;
             }
-            else
-            {
-                division = Enumerable.Empty<Division>();
-                ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
-            }
-
-            return Json(division);
+            return Json(division, new Newtonsoft.Json.JsonSerializerSettings());
         }
 
-        public IActionResult GetById(string id)
+        public JsonResult GetById(string id)
         {
             Division division = null;
-            //    var token = HttpContext.Session.GetString("token");             //tambahan
-            //    http.DefaultRequestHeaders.Add("Authorization", token);         //tambahan
-            var resTask = http.GetAsync("division/" + id);
-            resTask.Wait();
+                var token = HttpContext.Session.GetString("JWToken");
+                http.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = http.GetAsync("division/" + id);
+            restTask.Wait();
 
-            var result = resTask.Result;
+            var result = restTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<Division>();
-                readTask.Wait();
-
-                division = readTask.Result;
+                var readTask = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                division = JsonConvert.DeserializeObject<Division>(readTask);
             }
-
             return Json(division);
         }
 
@@ -75,8 +67,8 @@ namespace Client.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                //   var token = HttpContext.Session.GetString("token");             //tambahan
-                //   http.DefaultRequestHeaders.Add("Authorization", token);       //tambahan
+                var token = HttpContext.Session.GetString("JWToken");
+                http.DefaultRequestHeaders.Add("Authorization", token);
 
                 if (divisions.Id == null)
                 {
@@ -99,8 +91,8 @@ namespace Client.Controllers
 
         public JsonResult Delete(string id)
         {
-            //    var token = HttpContext.Session.GetString("token");                 //tambahan
-            //    http.DefaultRequestHeaders.Add("Authorization", token);           //tambahan
+            var token = HttpContext.Session.GetString("JWToken");
+            http.DefaultRequestHeaders.Add("Authorization", token);
             var result = http.DeleteAsync("division/" + id).Result;
             return Json(result);
         }
