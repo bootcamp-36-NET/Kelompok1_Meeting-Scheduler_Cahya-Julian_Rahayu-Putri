@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Models;
+using API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -117,6 +118,25 @@ namespace Client.Controllers
                 ModelState.AddModelError(string.Empty, "Server Error try Again");
             }
             return Json(employees);
+        }
+        public JsonResult LoadAllBook()
+        {
+            IEnumerable<InterimVM> bookings = null;
+            //var token = HttpContext.Session.GetString("JWToken");
+            //httpClient.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = httpClient.GetAsync("Booking/semua");
+            restTask.Wait();
+
+            var result = restTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<IList<InterimVM>>();
+                readTask.Wait();
+                bookings = readTask.Result;
+
+            }
+            return Json(bookings, new Newtonsoft.Json.JsonSerializerSettings());
+
         }
     }
 }

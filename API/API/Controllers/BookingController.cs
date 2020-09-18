@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Bases;
+using API.Context;
 using API.Models;
 using API.Repository.Data;
+using API.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -15,10 +18,12 @@ namespace API.Controllers
     public class BookingController : BaseController<Booking, BookingRepo>
     {
         private readonly BookingRepo _repo;
+        private readonly MyContext myContext;
 
-        public BookingController(BookingRepo bookingRepo) : base(bookingRepo)
+        public BookingController(BookingRepo bookingRepo, MyContext context) : base(bookingRepo)
         {
             this._repo = bookingRepo;
+            this.myContext = context;
         }
 
         [HttpPut("{Id}")]
@@ -47,6 +52,42 @@ namespace API.Controllers
                 return Ok("data has been updated");
             }
             return BadRequest("Failed to update data. Please try again.");
+        }
+        [Route("semua")]
+        [HttpGet]
+        public async Task<List<InterimVM>> GetAllSemua()
+        {
+            List<InterimVM> list = new List<InterimVM>();
+
+            var getEmp = await myContext.Bookings.Include("Employee").Include("Rooms").Where(Q=>Q.Rooms!=null).ToListAsync();
+            var getRoom = await myContext.Rooms.Where(Q=>Q.isBook == true).ToListAsync();
+
+            //if (getEmp.Count == 0)
+            //{
+            //    return null;
+            //}
+            foreach (var item in getEmp)
+            {
+                var user = new InterimVM()
+                {
+                    BookingId = item.Id,
+                    TeamLeader = item.Employee.FullName,
+                    EndDate = item.EndDate,
+                    Time = item.Time,
+                    BookingName = item.Name,
+                    CreateDate = item.CreateDate                    
+                };
+                list.Add(user);
+            }
+            foreach(var room in getRoom)
+            {
+                var user2 = new InterimVM()
+                {
+                    Room = room.Name
+                };
+                list.Add(user2);
+            }            
+            return list;
         }
     }
 }

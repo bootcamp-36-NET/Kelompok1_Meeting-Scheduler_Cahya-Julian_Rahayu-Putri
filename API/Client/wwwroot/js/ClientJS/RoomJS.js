@@ -1,6 +1,6 @@
 ﻿var tableRoom = {
     create: function () {
-        debugger;
+        //debugger;
         // jika table tersebut datatable, maka clear and dostroy
         if ($.fn.DataTable.isDataTable('#MydataTable')) {
             // table yg sudah dibentuk menjadi datatable harus d rebuild lagi
@@ -229,3 +229,51 @@ var selopBookingEdit = {
         });
     }
 };
+var tableSub = {
+    create: function () {
+        debugger;
+        // jika table tersebut datatable, maka clear and dostroy
+        if ($.fn.DataTable.isDataTable('#MydataSubmission')) {
+            // table yg sudah dibentuk menjadi datatable harus d rebuild lagi
+            // untuk di instantiasi ulang
+            $('#MydataSubmission').DataTable().clear();
+            $('#MydataSubmission').DataTable().destroy();
+        }
+        $.ajax({
+            url: '/TeamRoomWeb/LoadRoom',
+            method: 'get',
+            contentType: 'application/json',
+            success: function (res, status, xhr) {
+                debugger;
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $('#MydataSubmission').DataTable({
+                        data: res,
+                        "columnDefs": [
+                            { "orderable": false, "targets": 2 }
+                        ],
+                        columns: [
+                            {
+                                title: "No.", data: "", render: function (data, type, row, meta) {
+                                    return meta.row + meta.settings._iDisplayStart + 1;
+                                }
+                            },
+                            { title: "Team Leader", data: "Name" },
+                            { title: "Room Request", data: "Room" },
+                            //{
+                            //    title: "Action", data: null, "sortable": false, render: function (data, type, row) {
+                            //        return "<button class='btn btn-outline-warning' title='Edit' onclick=formBooking.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
+                            //            "<button class='btn btn-outline-danger' title='Delete' onclick=formBooking.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
+                            //    }
+                            //}
+                        ]
+                    });
+                } else {
+                }
+            },
+            erorrr: function (err) {
+                console.log(err);
+            }
+        });
+    }
+};
+tableSub.create();

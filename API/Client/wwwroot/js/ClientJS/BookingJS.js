@@ -301,34 +301,3 @@ var selopBookingEdit = {
         });
     }
 };
-
-//$.ajax({
-//    url: '/BookingWeb/LoadEmployee/',
-//    type: 'get',
-//    contentType: 'application/json',
-//    success: function (res, status, xhr) {
-//        debugger;
-//        if (xhr.status == 200 || xhr.status == 201) {
-//            $("#team").select2({
-//                res: [],
-//                multiple: true,
-//                placeholder: "Choose Team",
-//                allowClear: true,
-//                tokenSeparators: ";"
-//            });
-//            var select = document.getElementById('team');
-
-//             Add options
-//            for (var i in res) {
-//                $(select).append('<option value=' + res[i].id + '>' + res[i].fullName + '</option>');
-//                $(select).append('<option value=' + res[i + 1].id + ' disabled="disabled">' + res[i + 1].fullName + '</option>');
-//            }
-//        } else {
-
-//        }
-//    },
-//    error: function (xhr, status, error) {
-//        var err = eval("(" + xhr.responseText + ")");
-//        console.log(err.Message);
-//    }
-//});

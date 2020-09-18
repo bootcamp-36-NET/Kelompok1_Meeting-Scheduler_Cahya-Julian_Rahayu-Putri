@@ -4,20 +4,36 @@ using API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20200918120611_addteamRoom")]
+    partial class addteamRoom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("API.Models.ArrayBooking", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Room");
+
+                    b.Property<string>("Team");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("arraybooking");
+                });
 
             modelBuilder.Entity("API.Models.Booking", b =>
                 {
@@ -160,28 +176,6 @@ namespace API.Migrations
                     b.HasIndex("BookingId");
 
                     b.ToTable("tb_room");
-                });
-
-            modelBuilder.Entity("API.Models.TeamRoom", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTimeOffset>("CreateDate");
-
-                    b.Property<DateTimeOffset>("DeleteDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Room");
-
-                    b.Property<DateTimeOffset>("UpdateDate");
-
-                    b.Property<bool>("isDelete");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tb_m_teamRoom");
                 });
 
             modelBuilder.Entity("API.Models.User", b =>

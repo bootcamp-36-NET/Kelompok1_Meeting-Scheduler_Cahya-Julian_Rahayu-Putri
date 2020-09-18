@@ -78,11 +78,17 @@
                         <div class="modal-body">
                             <form id="form-room" role="form">
                                 <input name="id" type="hidden" />
-
                                 <div class="form-group">
-                                    <label>Name : </label>
-                                    <input class="form-control" id="name" name="roomName"
-                                           placeholder="Room Name" required type="text">
+                                    <label>Team Leader : </label>
+                                    <select class="select2" style="width: 100%;" id="team2" name="team" required>
+                                        <option value="" hidden selected> -- Choose Team Leader -- </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Room : </label>
+                                    <select class="select2" style="width: 100%;" id="room" name="room" required>
+                                        @*<option value="" hidden selected> -- Choose Room -- </option>*@
+                                    </select>
                                 </div>
 
                             </form>
@@ -107,14 +113,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             selopEmployee.getAllEmployee();
+            selopEmployeeRoom.getAllEmployeeRoom();
+            selopRoom.getAllRoom();
             $(".select2").select2();
-            //$("#time").select2({
-            //    teamEmp: [],
-            //    multiple: true,
-            //    placeholder: "Choose Time",
-            //    allowClear: true,
-            //    tokenSeparators: ";"
-            //});
+            $("#room").select2({
+                //teamEmp: [],
+                multiple: true,
+                placeholder: "Choose Time",
+                allowClear: true,
+                tokenSeparators: ";"
+            });
         });
     </script>
 }
