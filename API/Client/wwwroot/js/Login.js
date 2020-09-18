@@ -84,7 +84,7 @@ function Verify() {
 };
 
 //dropdown data dept
-var selopDepartment = {
+var selopEmployee = {
     getAllDepartment: function (idAja) {
         $.ajax({
             url: '/select2/',
@@ -117,6 +117,6 @@ var selopDepartment = {
 };
 
 $(document).ready(function () {
-    selopDepartment.getAllDepartment();
+    selopEmployee.getAllDepartment();
     $(".select2").select2();
 });

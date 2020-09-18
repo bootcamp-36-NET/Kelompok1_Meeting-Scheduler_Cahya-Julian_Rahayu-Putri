@@ -20,6 +20,7 @@ namespace API.Models
         public string Time { get; set; }
         public string EmployeeId { get; set; }
         public Employee Employee { get; set; }
+        public ICollection<Room> Rooms { get; set; }
 
     }
 }
