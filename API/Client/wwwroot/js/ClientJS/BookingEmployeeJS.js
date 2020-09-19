@@ -31,10 +31,10 @@
             }
         });
     }, saveFormRoom: function () {
-        debugger;
+        //debugger;
         var teamrooms = new Object();
         teamrooms.Room = $('#room').val();
-        teamrooms.Name = $('#team2').val();
+        teamrooms.Name = $('#book').val();
         console.log(teamrooms);
         $.ajax({
             url: '/TeamRoomWeb/InsertorupdateRoom/',
@@ -152,25 +152,25 @@ var selopEmployeeRoom = {
     getAllEmployeeRoom: function (idAja) {
         //debugger;
         $.ajax({
-            url: '/BookingWeb/LoadEmployee/',
+            url: '/BookingWeb/LoadBook/',
             method: 'get',
             contentType: 'application/json',
             success: function (res, status, xhr) {
                 //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
-                    $("#team2").select2();
-                    var dynamicSelect = document.getElementById("team2");
+                    $("#book").select2();
+                    var dynamicSelect = document.getElementById("book");
                     Array.from(res).forEach(element => {
                         var newOption = document.createElement("option")
-                        newOption.setAttribute("id", element.id);
-                        newOption.setAttribute("value", element.fullName);
-                        newOption.setAttribute("name", "fullName");
-                        newOption.text = element.fullName;
+                        newOption.setAttribute("id", element.Id);
+                        newOption.setAttribute("value", element.Name);
+                        newOption.setAttribute("name", "Name");
+                        newOption.text = element.Name;
                         dynamicSelect.add(newOption);
                     });
                     //console.log(res);
                     if (idAja != 0) {
-                        $("#team option[id='" + idAja + "']").attr("selected", "selected");
+                        $("#book option[id='" + idAja + "']").attr("selected", "selected");
                     }
                 } else {
                 }

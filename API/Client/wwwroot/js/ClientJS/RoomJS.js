@@ -31,8 +31,8 @@
                             { title: "Approval", data: "isBook" },
                             {
                                 title: "Action", data: null, "sortable": false, render: function (data, type, row) {
-                                    return "<button class='btn btn-outline-warning' title='Edit' onclick=formRoom.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
-                                        "<button class='btn btn-outline-danger' title='Delete' onclick=formRoom.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
+                                    return "<button class='btn btn-outline-warning' title='Edit' onclick=formBookingEmp.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
+                                        "<button class='btn btn-outline-danger' title='Delete' onclick=formBookingEmp.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
                                 }
                             }
                         ]
@@ -103,6 +103,7 @@ var formBookingEmp = {
                             timer: 1500,
                         });
                         tableRoom.create();
+                        location.reload();
                     } else {
                         Swal.fire('Error', 'Failed', 'error');
                     }
@@ -110,7 +111,41 @@ var formBookingEmp = {
                 })
             };
         });
-    }, editSaveRoom: function (editD) {
+    }, setDeleteDataBooking: function (id) {
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Do you want to delete this data?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, I do!',
+        }).then((result) => {
+            //debugger;
+            if (result.value) {
+                $.ajax({
+                    url: '/TeamRoomWeb/Delete/' + id,
+                    //data: { id: id }
+                    type: 'post'
+                }).then((result) => {
+                    //debugger;
+                    if (result.statusCode == 200 || result.statusCode == 201) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Delete Successfully',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        tableRoom.create();
+                        location.reload();
+                    } else {
+                        Swal.fire('Error', 'Failed', 'error');
+                    }
+
+                })
+            };
+        });
+    },  editSaveRoom: function (editD) {
         //debugger;
         var b = document.getElementById("bookingId2");
         var id1 = b.options[b.selectedIndex].id;
@@ -231,7 +266,7 @@ var selopBookingEdit = {
 };
 var tableSub = {
     create: function () {
-        debugger;
+        //debugger;
         // jika table tersebut datatable, maka clear and dostroy
         if ($.fn.DataTable.isDataTable('#MydataSubmission')) {
             // table yg sudah dibentuk menjadi datatable harus d rebuild lagi
@@ -244,7 +279,7 @@ var tableSub = {
             method: 'get',
             contentType: 'application/json',
             success: function (res, status, xhr) {
-                debugger;
+                //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#MydataSubmission').DataTable({
                         data: res,
@@ -257,14 +292,13 @@ var tableSub = {
                                     return meta.row + meta.settings._iDisplayStart + 1;
                                 }
                             },
-                            { title: "Team Leader", data: "Name" },
+                            { title: "Booking Name", data: "Name" },
                             { title: "Room Request", data: "Room" },
-                            //{
-                            //    title: "Action", data: null, "sortable": false, render: function (data, type, row) {
-                            //        return "<button class='btn btn-outline-warning' title='Edit' onclick=formBooking.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
-                            //            "<button class='btn btn-outline-danger' title='Delete' onclick=formBooking.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
-                            //    }
-                            //}
+                            {
+                                title: "Action", data: null, "sortable": false, render: function (data, type, row) {
+                                    return  "<button class='btn btn-outline-danger' title='Delete' onclick=formBookingEmp.setDeleteDataBooking('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
+                                }
+                            }
                         ]
                     });
                 } else {

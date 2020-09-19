@@ -61,11 +61,6 @@ namespace API.Controllers
 
             var getEmp = await myContext.Bookings.Include("Employee").Include("Rooms").Where(Q=>Q.Rooms!=null).ToListAsync();
             var getRoom = await myContext.Rooms.Where(Q=>Q.isBook == true).ToListAsync();
-
-            //if (getEmp.Count == 0)
-            //{
-            //    return null;
-            //}
             foreach (var item in getEmp)
             {
                 var user = new InterimVM()
@@ -75,7 +70,7 @@ namespace API.Controllers
                     EndDate = item.EndDate,
                     Time = item.Time,
                     BookingName = item.Name,
-                    CreateDate = item.CreateDate                    
+                    CreateDate = item.CreateDate,                    
                 };
                 list.Add(user);
             }
@@ -89,5 +84,6 @@ namespace API.Controllers
             }            
             return list;
         }
+
     }
 }
