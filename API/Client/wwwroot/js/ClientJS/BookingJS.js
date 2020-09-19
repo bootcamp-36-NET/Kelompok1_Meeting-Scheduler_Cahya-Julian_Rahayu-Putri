@@ -27,12 +27,24 @@
                             { title: "Booking Name", data: "Name" },
                             { title: "Time", data: "Time" },
                             { title: "Team", data: "Employee.FullName" },
-                            { title: "Filed Date", data: "CreateDate" },
-                            { title: "End Date", data: "EndDate" },
+                            {
+                                title: "Filed Date", data: "CreateDate",
+                                render: function (jsonDate) {
+                                    var date = moment(jsonDate).format("DD MMMM YYYY");
+                                    return date;
+                                }
+                            },
+                            {
+                                title: "End Date", data: "EndDate",
+                                render: function (jsonDate) {
+                                    var date = moment(jsonDate).format("DD MMMM YYYY");
+                                    return date;
+                                }
+                            },
                             {
                                 title: "Action", data: null, "sortable": false, render: function (data, type, row) {
-                                    return "<button class='btn btn-outline-warning' title='Edit' onclick=formBooking.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
-                                        "<button class='btn btn-outline-danger' title='Delete' onclick=formBooking.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
+                                    return "<button class='btn btn-outline-warning' title='Edit' onclick=formBookingEmp.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
+                                        "<button class='btn btn-outline-danger' title='Delete' onclick=formBookingEmp.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
                                 }
                             }
                         ]
@@ -48,7 +60,7 @@
 };
 var editBookings;
 $("#btn-edit").click(function () {
-    formBookingEmp.editSaveRoom(editBookings)
+    formBookingEmp.editSaveBooking(editBookings)
 });
 tableRoom.create();
 
@@ -130,7 +142,7 @@ var formBookingEmp = {
         });
     }, editSaveBooking: function (editD) {
         debugger;
-        editBooking = editbook;
+        editBookings = editD;
         var b = document.getElementById("team2");
         var id1 = b.options[b.selectedIndex].id;
         var myData = {
@@ -161,7 +173,7 @@ var formBookingEmp = {
             }
         });
     }, setEditData: function (editD) {
-        editBooking = editBookings, //supaya id bisa dibawa ke fungsi editForm
+        editBookings = editD, //supaya id bisa dibawa ke fungsi editForm
         console.log(editD);
         $.ajax({
             url: '/BookingWeb/GetById/' + editD,
@@ -172,7 +184,7 @@ var formBookingEmp = {
                 //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#name2').val(res.Name);
-                    selopBookingEdit.getAllEmployee(res.FullName);
+                    selopEmployeeEdit.getAllEmployee(res.FullName);
                     $('#time2').val(res.Time);
                     $('#endDate2').val(res.EndDate);
 
@@ -261,7 +273,7 @@ var selopEmployee = {
     }
 };
 
-var selopBookingEdit = {
+var selopEmployeeEdit = {
     getAllEmployee: function (idAja) {
         //debugger;
         $.ajax({

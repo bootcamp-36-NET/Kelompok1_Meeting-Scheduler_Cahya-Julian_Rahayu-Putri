@@ -109,7 +109,7 @@
                     $('#MydataTable').DataTable().destroy();
                 }
                 $.ajax({
-                    url: '/BookingWeb/LoadAllBook',
+                    url: '/RoomWeb/LoadRoomEmp',
                     method: 'get',
                     contentType: 'application/json',
                     success: function (res, status, xhr) {
@@ -126,12 +126,24 @@
                                             return meta.row + meta.settings._iDisplayStart + 1;
                                         }
                                     },
-                                   // { title: "Booking Id", data: "BookingId" },
-                                    { title: "Team Leader", data: "TeamLeader" },
-                                    { title: "Create Date", data: "CreateDate" },
+                                    // { title: "Booking Id", data: "BookingId" },
+                                    { title: "Room Booked", data: "RoomName" },
+                                    //{ title: "Team Leader", data: "TeamLeader" },
+                                    {
+                                        title: "Create Date", data: "CreateDate",
+                                        render: function (jsonDate) {
+                                            var date = moment(jsonDate).format("DD MMMM YYYY");
+                                            return date;
+                                        }},
+                                    { title: "Event", data: "BookingName" },
                                     { title: "Time", data: "Time" },
-                                    { title: "End Date", data: "EndDate" },
-                                    { title: "Room Booked", data: "Room" },
+                                    {
+                                        title: "End Date", data: "EndDate",
+                                        render: function (jsonDate) {
+                                            var date = moment(jsonDate).format("DD MMMM YYYY");
+                                            return date;
+                                        }
+                                    },
                                     //{
                                     //    title: "Action", data: null, "sortable": false, render: function (data, type, row) {
                                     //        return "<button class='btn btn-outline-warning' title='Edit' onclick=formRoom.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +

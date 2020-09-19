@@ -11,6 +11,9 @@ namespace API.ViewModels
         public string RoomName { get; set; }
         public string BookingId { get; set; }
         public string BookingName { get; set; }
+        public string Time { get; set; }
+        public DateTimeOffset EndDate { get; set; }
+        public string TeamLeader { get; set; }
         public DateTimeOffset CreateDate { get; set; }
         public DateTimeOffset DeleteDate { get; set; }
         public DateTimeOffset UpdateDate { get; set; }

@@ -107,7 +107,7 @@ using Client.Models;
             WriteLiteral("             <!-- Modal Save -->\r\n                        <div class=\"modal-body\">\r\n                            ");
             EndContext();
             BeginContext(1653, 2000, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30dbf60e1bf145a481e700c3bddbe88f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ae73c3978b74ff3a5f92a82de17df0f", async() => {
                 BeginContext(1689, 700, true);
                 WriteLiteral(@"
                                 <input name=""id"" type=""hidden"" />
@@ -123,7 +123,7 @@ using Client.Models;
                                         ");
                 EndContext();
                 BeginContext(2389, 68, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b3bd8987dda844108ac3b4705e59d080", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "960ea06706014486b081938b678f96e4", async() => {
                     BeginContext(2422, 26, true);
                     WriteLiteral(" -- Choose Team Leader -- ");
                     EndContext();
@@ -157,7 +157,7 @@ using Client.Models;
                                         ");
                 EndContext();
                 BeginContext(2818, 61, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8c07290a8db4d49a009c21436202605", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3759f6d81f7c411084bed47ff830574e", async() => {
                     BeginContext(2851, 19, true);
                     WriteLiteral(" -- Choose Time -- ");
                     EndContext();
@@ -185,7 +185,7 @@ using Client.Models;
                 WriteLiteral("\r\n                                        ");
                 EndContext();
                 BeginContext(2921, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "599a4fe5921e4da2aa94155e9eac9463", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "757c921816fc469a8a9e949b06d78c87", async() => {
                     BeginContext(2955, 15, true);
                     WriteLiteral(" 08.00 - 12.00 ");
                     EndContext();
@@ -207,7 +207,7 @@ using Client.Models;
                 WriteLiteral("\r\n                                        ");
                 EndContext();
                 BeginContext(3021, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f940098b342e4da38f65cf794db4c088", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed17003adcfd43aa9081f10f6f56a9fb", async() => {
                     BeginContext(3055, 15, true);
                     WriteLiteral(" 13.00 - 16.00 ");
                     EndContext();
@@ -229,7 +229,7 @@ using Client.Models;
                 WriteLiteral("\r\n                                        ");
                 EndContext();
                 BeginContext(3121, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "770aa9b2598947cf989de50fe9067afd", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "14789cb19cb24b2bbcb4011f5fe8f343", async() => {
                     BeginContext(3155, 15, true);
                     WriteLiteral(" 08.00 - 16.00 ");
                     EndContext();
@@ -291,7 +291,7 @@ using Client.Models;
                             ");
             EndContext();
             BeginContext(4295, 1002, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a6e5e519d63446ccbdc4973904a13a76", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3521720b31de437eb966b803b03c7976", async() => {
                 BeginContext(4328, 348, true);
                 WriteLiteral(@"
                                 <input name=""id"" type=""hidden"" />
@@ -301,7 +301,7 @@ using Client.Models;
                                         ");
                 EndContext();
                 BeginContext(4676, 69, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b87d2d2d202f403abf82bca361e76c16", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae01afeaf4c74769bbc1d5d7ab9402a2", async() => {
                     BeginContext(4709, 27, true);
                     WriteLiteral(" -- Choose Booking Name -- ");
                     EndContext();
@@ -375,7 +375,7 @@ using Client.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(5845, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "abbfc2642fbb470ba1949d3e63d0ef45", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c9ce87162de48eeb6cf9c7699482a83", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

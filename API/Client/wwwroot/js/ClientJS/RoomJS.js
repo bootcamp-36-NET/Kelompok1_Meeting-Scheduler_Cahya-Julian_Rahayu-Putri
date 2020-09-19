@@ -188,7 +188,7 @@ var formBookingEmp = {
                 //debugger;
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#name2').val(res.Name);
-                    selopBookingEdit.getAllBooking(res.Name);
+                    selopEmployeeEdit.getAllBooking(res.Name);
                     $('#exampleModalCenterEdit').modal('show');
                     //console.log(name);
 
@@ -231,7 +231,7 @@ $(document).on('click', '#btn-save', function (e) {
     });
 });
 
-var selopBookingEdit = {
+var selopEmployeeEdit = {
     getAllBooking: function (idAja) {
         //debugger;
         $.ajax({

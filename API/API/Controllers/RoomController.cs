@@ -45,7 +45,7 @@ namespace API.Controllers
                 getId.BookingId = entity.BookingId;
                 getId.CreateDate = DateTimeOffset.Now;
                 getId.UpdateDate = DateTimeOffset.Now;
-                getId.isBook = true;
+                getId.isBook = false;
                 await _repo.Update(getId);
                 return Ok("data has been updated");
             }
@@ -75,6 +75,38 @@ namespace API.Controllers
                     CreateDate = item.CreateDate,
                     UpdateDate = item.UpdateDate,
                     isBook = item.isBook
+                };
+                list.Add(user);
+            }
+            return list;
+        }
+        [Route("getRoomEmp")]
+        [HttpGet]
+        public async Task<List<RoomVM>> GetAllRommEmp()
+        {
+            List<RoomVM> list = new List<RoomVM>();
+
+            var getUserRole = await _context.Rooms.Include("Booking").Where(x => x.isDelete == false && x.isBook == true).ToListAsync();
+            if (getUserRole.Count == 0)
+            {
+                return null;
+            }
+            foreach (var item in getUserRole)
+            {
+                var user = new RoomVM()
+                {
+                    Id = item.Id,
+                    RoomName = item.Name,
+                    BookingId = item.BookingId,
+                    BookingName = item.Booking.Name,
+                    isDelete = item.isDelete,
+                    DeleteDate = item.DeleteDate,
+                    CreateDate = item.CreateDate,
+                    UpdateDate = item.UpdateDate,
+                    isBook = item.isBook,
+                    Time = item.Booking.Time,
+                    EndDate = item.Booking.EndDate
+                    //TeamLeader = item.Booking.Employee.FullName
                 };
                 list.Add(user);
             }

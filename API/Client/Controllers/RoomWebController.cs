@@ -97,5 +97,24 @@ namespace Client.Controllers
             var result = httpClient.DeleteAsync("Room/" + id).Result;
             return Json(result);
         }
+        public JsonResult LoadRoomEmp()
+        {
+            IEnumerable<RoomVM> rooms = null;
+            //var token = HttpContext.Session.GetString("JWToken");
+            //httpClient.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = httpClient.GetAsync("Room/getRoomEmp");
+            restTask.Wait();
+
+            var result = restTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<IList<RoomVM>>();
+                readTask.Wait();
+                rooms = readTask.Result;
+
+            }
+            return Json(rooms, new Newtonsoft.Json.JsonSerializerSettings());
+
+        }
     }
 }
