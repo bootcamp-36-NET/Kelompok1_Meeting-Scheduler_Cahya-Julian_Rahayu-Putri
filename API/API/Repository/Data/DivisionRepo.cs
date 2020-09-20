@@ -22,8 +22,26 @@ namespace API.Repository.Data
 
         public override async Task<List<Division>> GetAll()
         {
+            List<Division> list = new List<Division>();
             var data = await _context.Division.Include("Department").Where(x => x.isDelete == false).ToListAsync();
-            return data;
+            if (data.Count == 0)
+            {
+                return null;
+            }
+            foreach (var division in data)
+            {
+                var emp = new Division()
+                {
+                    Id = division.Id,
+                    Name = division.Name,
+                    DepartmentId = division.Department.Name,
+                    CreateDate = division.CreateDate,
+                    UpdateDate = division.UpdateDate,
+                    DeleteDate = division.DeleteDate
+                };
+                list.Add(emp);
+            }
+            return list;
         }
     }
 }

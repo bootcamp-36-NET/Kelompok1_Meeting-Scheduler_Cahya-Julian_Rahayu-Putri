@@ -1,4 +1,6 @@
-﻿var formBookingEmp = {
+﻿
+var roomAll = [];
+var formBookingEmp = {
     saveForm: function () {
         var b = document.getElementById("team");
         var id1 = b.options[b.selectedIndex].id;
@@ -31,9 +33,31 @@
             }
         });
     }, saveFormRoom: function () {
-        //debugger;
+        debugger;
+        $("#room").select2({
+            roomAll: [],
+            multiple: true,
+            placeholder: "Choose Time",
+            allowClear: true,
+            tokenSeparators: ";",
+            language: "id"
+        });
+
+        //$("#my_select2").val(Values).trigger('change');
+        var a = $("#room").val()
+        console.log(a[0])
+
+        for (var x = 0; x < a.length; x++) {
+            var id2 = a[x]
+            var id = {
+                id2
+            };
+            roomAll.push(id)
+        }
+        //var valoresArea = roomAll;
+        //var arrayArea = valoresArea.split(',');
         var teamrooms = new Object();
-        teamrooms.Room = $('#room').val();
+        teamrooms.Room = roomAll.val();
         teamrooms.Name = $('#book').val();
         console.log(teamrooms);
         $.ajax({

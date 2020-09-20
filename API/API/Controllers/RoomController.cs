@@ -53,7 +53,7 @@ namespace API.Controllers
         }
         [Route("getRoom")]
         [HttpGet]
-        public async Task<List<RoomVM>> GetAllRomm()
+        public async Task<List<RoomVM>> GetAllRoom()
         {
             List<RoomVM> list = new List<RoomVM>();
 

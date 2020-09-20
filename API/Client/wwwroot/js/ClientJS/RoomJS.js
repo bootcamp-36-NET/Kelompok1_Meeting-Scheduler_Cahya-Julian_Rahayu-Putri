@@ -54,9 +54,15 @@ tableRoom.create();
 
 var formBookingEmp = {
     saveForm: function () {
-        debugger;
+        //debugger;
+        var b = document.getElementById("bookingId");
+        var id1 = b.options[b.selectedIndex].id;
+        var myData = {
+            Id: id1
+        };
         var rooms = new Object();
         rooms.Name = $('#name').val();
+        rooms.BookingId = myData.Id;
         console.log(rooms);
         $.ajax({
             url: '/RoomWeb/InsertorupdateRoom/',
@@ -264,6 +270,40 @@ var selopEmployeeEdit = {
         });
     }
 };
+var selopEmployeeB = {
+    getAllBooking: function (idAja) {
+        //debugger;
+        $.ajax({
+            url: '/BookingWeb/LoadBook/',
+            method: 'get',
+            contentType: 'application/json',
+            success: function (res, status, xhr) {
+                //debugger;
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $("#bookingId").select2();
+                    var dynamicSelect = document.getElementById("bookingId");
+                    Array.from(res).forEach(element => {
+                        var newOption = document.createElement("option")
+                        newOption.setAttribute("id", element.Id);
+                        newOption.setAttribute("value", element.Name);
+                        newOption.setAttribute("name", "Name");
+                        newOption.text = element.Name;
+                        dynamicSelect.add(newOption);
+                    });
+                    //console.log(res);
+                    if (idAja != 0) {
+                        $("#bookinId option[id='" + idAja + "']").attr("selected", "selected");
+                    }
+                } else {
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+};
+selopEmployeeB.getAllBooking();
 var tableSub = {
     create: function () {
         //debugger;

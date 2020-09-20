@@ -4,7 +4,7 @@
     Layout = "~/Views/Layout/Layout.cshtml";
 }
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Booking New</h1>
+<h1 class="h3 mb-2 text-gray-800">Booking </h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -19,7 +19,10 @@
                 <div class="profile-head">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Submission</a>
+                            <a class="nav-link active" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="true">Manual Guide</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Submission</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Rooms</a>
@@ -31,8 +34,36 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <!--Modal Manual Guide-->
 
+                    <div class="tab-pane fade show active" id="manual" role="tabpanel" aria-labelledby="manual-tab">
+                        <!-- Modal Save -->
+                        <div class="modal-body">
+                            <pre>
+
+The first step:
+     1. Press the Submission Menu.
+     2. Write the name of your event or activity in the "Booking Name" column.
+     3. Choose your name or your co-worker as the person in charge of the activity in the "Team Leader" column.
+     4. Choose the hours of the activity in the "Time" column.
+     5. Enter the end date of the activity in the "End Date" column.
+     6. Press "Save" button.
+
+The Second step:
+     1. Press the Room Menu.
+     2. Choose the name of the activity you wrote down earlier in "Booking Name" column.
+     3. Select the room you want to use in the "Room" column.
+     4. Press "Save" button. 
+     5. Wait until Admin check your request room.
+
+  
+                            </pre>
+                        </div>
+
+                        <!--End Modal Post-->
+                    </div>
+
+                    <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <!-- Modal Save -->
                         <div class="modal-body">
                             <form id="form-booking" role="form">
@@ -79,7 +110,7 @@
                             <form id="form-room" role="form">
                                 <input name="id" type="hidden" />
                                 <div class="form-group">
-                                    <label>Team Leader : </label>
+                                    <label>Booking Name : </label>
                                     <select class="select2" style="width: 100%;" id="book" name="book" required>
                                         <option value="" hidden selected> -- Choose Booking Name -- </option>
                                     </select>
