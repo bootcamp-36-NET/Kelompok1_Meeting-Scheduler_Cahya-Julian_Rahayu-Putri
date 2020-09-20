@@ -94,3 +94,5 @@ D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Division\Index.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\BookingEmployee\Index.cshtml.g.cs
 D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Chart\Index.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\Shared\ErrorHandler.cshtml.g.cs
+D:\FileKerja\MII\ProjectNetCore\Kelompok1_Meeting-Scheduler_Cahya-Julian_Rahayu-Putri\API\Client\obj\Debug\netcoreapp2.1\Razor\Views\ErrorHandler\ErrorHandler.cshtml.g.cs

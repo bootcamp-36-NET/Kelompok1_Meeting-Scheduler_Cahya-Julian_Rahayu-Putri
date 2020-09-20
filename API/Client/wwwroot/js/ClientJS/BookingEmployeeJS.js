@@ -44,20 +44,20 @@ var formBookingEmp = {
         });
 
         //$("#my_select2").val(Values).trigger('change');
-        var a = $("#room").val()
-        console.log(a[0])
+        var roomBook = $("#room").val().toString();
+        //console.log(a[0])
 
-        for (var x = 0; x < a.length; x++) {
-            var id2 = a[x]
-            var id = {
-                id2
-            };
-            roomAll.push(id)
-        }
+        //for (var x = 0; x < a.length; x++) {
+        //    var id2 = a[x]
+        //    var id = {
+        //        id2
+        //    };
+        //    roomAll.push(id)
+        //}
         //var valoresArea = roomAll;
         //var arrayArea = valoresArea.split(',');
         var teamrooms = new Object();
-        teamrooms.Room = roomAll.val();
+        teamrooms.Room = roomBook;
         teamrooms.Name = $('#book').val();
         console.log(teamrooms);
         $.ajax({

@@ -88,12 +88,12 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("    <div class=\"container emp-profile\">\r\n        ");
             EndContext();
             BeginContext(715, 4543, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5916d8d1f8024bea9a97844f17579a2e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3442cd5a69b84e8eb171b286d91bc941", async() => {
                 BeginContext(735, 144, true);
                 WriteLiteral("\r\n            <div class=\"row\">\r\n                <div class=\"col-md-4\">\r\n                    <div class=\"profile-img\">\r\n                        ");
                 EndContext();
                 BeginContext(879, 34, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b590dc14270d4e7db50eed8b0e87dc79", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2cc2cf3cd1614b8e95dc96dcd65efbde", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -320,12 +320,12 @@ else
             WriteLiteral("    <div class=\"container emp-profile\">\r\n        ");
             EndContext();
             BeginContext(5667, 4544, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8a2b631c3284164a737b91477d45024", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d13d5e45129e41e3a19291265a415fc0", async() => {
                 BeginContext(5687, 144, true);
                 WriteLiteral("\r\n            <div class=\"row\">\r\n                <div class=\"col-md-4\">\r\n                    <div class=\"profile-img\">\r\n                        ");
                 EndContext();
                 BeginContext(5831, 34, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "111d6d919a2e4def94c02ace8427c78e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c98fda1bb3524bd0aaadd4494f7c44b0", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
