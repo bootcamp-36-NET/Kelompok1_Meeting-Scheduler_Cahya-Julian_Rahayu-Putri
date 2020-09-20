@@ -162,7 +162,7 @@ var formBookingEmp = {
         var rooms = new Object();
         rooms.Name = $('#name2').val();
         rooms.BookingId = myData.Id;
-        rooms.isBook = $('#isBook').val();
+        rooms.isBook = $('#isBook2').val();
         console.log(rooms);
         $.ajax({
             url: '/RoomWeb/InsertorupdateRoom/' + editD,

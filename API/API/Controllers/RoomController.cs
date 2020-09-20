@@ -45,7 +45,7 @@ namespace API.Controllers
                 getId.BookingId = entity.BookingId;
                 getId.CreateDate = DateTimeOffset.Now;
                 getId.UpdateDate = DateTimeOffset.Now;
-                getId.isBook = false;
+                getId.isBook = entity.isBook;
                 await _repo.Update(getId);
                 return Ok("data has been updated");
             }
