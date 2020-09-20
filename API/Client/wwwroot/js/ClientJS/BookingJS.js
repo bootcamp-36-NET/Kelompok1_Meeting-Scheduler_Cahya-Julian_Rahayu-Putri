@@ -27,12 +27,24 @@
                             { title: "Booking Name", data: "Name" },
                             { title: "Time", data: "Time" },
                             { title: "Team", data: "Employee.FullName" },
-                            { title: "Filed Date", data: "CreateDate" },
-                            { title: "End Date", data: "EndDate" },
+                            {
+                                title: "Filed Date", data: "CreateDate",
+                                render: function (jsonDate) {
+                                    var date = moment(jsonDate).format("DD MMMM YYYY");
+                                    return date;
+                                }
+                            },
+                            {
+                                title: "End Date", data: "EndDate",
+                                render: function (jsonDate) {
+                                    var date = moment(jsonDate).format("DD MMMM YYYY");
+                                    return date;
+                                }
+                            },
                             {
                                 title: "Action", data: null, "sortable": false, render: function (data, type, row) {
-                                    return "<button class='btn btn-outline-warning' title='Edit' onclick=formBooking.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
-                                        "<button class='btn btn-outline-danger' title='Delete' onclick=formBooking.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
+                                    return "<button class='btn btn-outline-warning' title='Edit' onclick=formBookingEmp.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
+                                        "<button class='btn btn-outline-danger' title='Delete' onclick=formBookingEmp.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
                                 }
                             }
                         ]
@@ -46,14 +58,15 @@
         });
     }
 };
-var edieditRoom$("#btn-edit").click(function () {
-    formRoom.editSaveRoom(edieditRoom
+var editBookings;
+$("#btn-edit").click(function () {
+    formBookingEmp.editSaveBooking(editBookings)
 });
 tableRoom.create();
 
-var formRoom = {
+var formBookingEmp = {
     saveForm: function () {
-        debugger;
+        //debugger;
         //var a = $("#time").val()
         var b = document.getElementById("team");
         var id1 = b.options[b.selectedIndex].id;
@@ -129,7 +142,8 @@ var formRoom = {
         });
     }, editSaveBooking: function (editD) {
         debugger;
-        editBooking editRoom       var b = document.getElementById("team2");
+        editBookings = editD;
+        var b = document.getElementById("team2");
         var id1 = b.options[b.selectedIndex].id;
         var myData = {
             id: id1
@@ -159,7 +173,7 @@ var formRoom = {
             }
         });
     }, setEditData: function (editD) {
-        editBooking = eeditRoomw, supaya id bisa dibawa ke fungsi editForm
+        editBookings = editD, //supaya id bisa dibawa ke fungsi editForm
         console.log(editD);
         $.ajax({
             url: '/BookingWeb/GetById/' + editD,
@@ -204,7 +218,7 @@ $(document).on('click', '#btn-save', function (e) {
             return new Promise(function (resolve) {
                 if (result) {
                     resolve();
-                    formRoom.saveForm();
+                    formBookingEmp.saveForm();
                     //teamEmp = [];
                 } else {
                     resolve("Please check confirmation button")
@@ -299,34 +313,3 @@ var selopEmployeeEdit = {
         });
     }
 };
-
-//$.ajax({
-//    url: '/BookingWeb/LoadEmployee/',
-//    type: 'get',
-//    contentType: 'application/json',
-//    success: function (res, status, xhr) {
-//        debugger;
-//        if (xhr.status == 200 || xhr.status == 201) {
-//            $("#team").select2({
-//                res: [],
-//                multiple: true,
-//                placeholder: "Choose Team",
-//                allowClear: true,
-//                tokenSeparators: ";"
-//            });
-//            var select = document.getElementById('team');
-
-//             Add options
-//            for (var i in res) {
-//                $(select).append('<option value=' + res[i].id + '>' + res[i].fullName + '</option>');
-//                $(select).append('<option value=' + res[i + 1].id + ' disabled="disabled">' + res[i + 1].fullName + '</option>');
-//            }
-//        } else {
-
-//        }
-//    },
-//    error: function (xhr, status, error) {
-//        var err = eval("(" + xhr.responseText + ")");
-//        console.log(err.Message);
-//    }
-//});

@@ -16,11 +16,11 @@ namespace API.Repository.Data
             _context = myContext;
         }
 
-        public override async Task<List<Room>> GetAll()
-        {
-            var data = await _context.Rooms.Include("Booking").Where(x => x.isDelete == false).ToListAsync();
-            return data;
-        }
+        //public override async Task<List<Room>> GetAll()
+        //{
+        //    var data = await _context.Rooms.Include("Booking").Where(x => x.isDelete == false).ToListAsync();
+        //    return data;
+        //}
 
     }
 }

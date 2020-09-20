@@ -151,6 +151,8 @@ namespace API.Migrations
 
                     b.Property<DateTimeOffset>("UpdateDate");
 
+                    b.Property<bool>("isBook");
+
                     b.Property<bool>("isDelete");
 
                     b.HasKey("Id");
@@ -158,6 +160,28 @@ namespace API.Migrations
                     b.HasIndex("BookingId");
 
                     b.ToTable("tb_room");
+                });
+
+            modelBuilder.Entity("API.Models.TeamRoom", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTimeOffset>("CreateDate");
+
+                    b.Property<DateTimeOffset>("DeleteDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Room");
+
+                    b.Property<DateTimeOffset>("UpdateDate");
+
+                    b.Property<bool>("isDelete");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_m_teamRoom");
                 });
 
             modelBuilder.Entity("API.Models.User", b =>

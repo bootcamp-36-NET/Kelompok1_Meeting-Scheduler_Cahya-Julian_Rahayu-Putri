@@ -1,92 +1,88 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Rekap Booking";
     Layout = "~/Views/Layout/Layout.cshtml";
 }
 
 <!-- Content Row -->
-<div class="row">
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+</div>
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                            </div>
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pending Requests Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="MydataTable" width="100%" cellspacing="0"></table>
     </div>
 </div>
 
 
 <!-- Content Row -->
 @section scriptdbAdmin{
+    <script>
+        var tableRoom = {
+            create: function () {
+                //debugger;
+                // jika table tersebut datatable, maka clear and dostroy
+                if ($.fn.DataTable.isDataTable('#MydataTable')) {
+                    // table yg sudah dibentuk menjadi datatable harus d rebuild lagi
+                    // untuk di instantiasi ulang
+                    $('#MydataTable').DataTable().clear();
+                    $('#MydataTable').DataTable().destroy();
+                }
+                $.ajax({
+                    url: '/RoomWeb/LoadRoomEmp',
+                    method: 'get',
+                    contentType: 'application/json',
+                    success: function (res, status, xhr) {
+                        //debugger;
+                        if (xhr.status == 200 || xhr.status == 201) {
+                            $('#MydataTable').DataTable({
+                                data: res,
+                                "columnDefs": [
+                                    { "orderable": false, "targets": 2 }
+                                ],
+                                columns: [
+                                    {
+                                        title: "No.", data: "", render: function (data, type, row, meta) {
+                                            return meta.row + meta.settings._iDisplayStart + 1;
+                                        }
+                                    },
+                                    // { title: "Booking Id", data: "BookingId" },
+                                    { title: "Room Booked", data: "RoomName" },
+                                    //{ title: "Team Leader", data: "TeamLeader" },
+                                    {
+                                        title: "Create Date", data: "CreateDate",
+                                        render: function (jsonDate) {
+                                            var date = moment(jsonDate).format("DD MMMM YYYY");
+                                            return date;
+                                        }},
+                                    { title: "Event", data: "BookingName" },
+                                    { title: "Time", data: "Time" },
+                                    {
+                                        title: "End Date", data: "EndDate",
+                                        render: function (jsonDate) {
+                                            var date = moment(jsonDate).format("DD MMMM YYYY");
+                                            return date;
+                                        }
+                                    },
+                                    //{
+                                    //    title: "Action", data: null, "sortable": false, render: function (data, type, row) {
+                                    //        return "<button class='btn btn-outline-warning' title='Edit' onclick=formRoom.setEditData('" + data.Id + "')><i class='fa fa-lg fa-edit'></i></button>" +
+                                    //            "<button class='btn btn-outline-danger' title='Delete' onclick=formRoom.setDeleteData('" + data.Id + "')><i class='fa fa-lg fa-trash'></i></button>"
+                                    //    }
+                                    //}
+                                ]
+                            });
+                        } else {
+                        }
+                    },
+                    erorrr: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+        };
+        tableRoom.create();
+    </script>
 }
 

@@ -20,11 +20,10 @@ namespace API.Repository.Data
             _context = myContext;
         }
 
-        [HttpGet]
         public override async Task<List<Division>> GetAll()
         {
             List<Division> list = new List<Division>();
-            var data = await _context.Divisions.Include("Department").Where(x => x.isDelete == false).ToListAsync();
+            var data = await _context.Division.Include("Department").Where(x => x.isDelete == false).ToListAsync();
             if (data.Count == 0)
             {
                 return null;

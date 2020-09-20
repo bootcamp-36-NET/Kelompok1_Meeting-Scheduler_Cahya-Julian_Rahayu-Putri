@@ -26,8 +26,8 @@ namespace Client.Controllers
         public JsonResult LoadDivision()
         {
             IEnumerable<Division> division = null;
-                var token = HttpContext.Session.GetString("JWToken");
-                http.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("JWToken");
+            http.DefaultRequestHeaders.Add("Authorization", token);
             var restTask = http.GetAsync("division");
             restTask.Wait();
 
@@ -44,8 +44,8 @@ namespace Client.Controllers
         public JsonResult GetById(string id)
         {
             Division division = null;
-                var token = HttpContext.Session.GetString("JWToken");
-                http.DefaultRequestHeaders.Add("Authorization", token);
+            var token = HttpContext.Session.GetString("JWToken");
+            http.DefaultRequestHeaders.Add("Authorization", token);
             var restTask = http.GetAsync("division/" + id);
             restTask.Wait();
 

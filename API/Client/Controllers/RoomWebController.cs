@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Models;
+using API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -23,16 +24,16 @@ namespace Client.Controllers
         }
         public JsonResult LoadRoom()
         {
-            IEnumerable<Room> rooms = null;
+            IEnumerable<RoomVM> rooms = null;
             //var token = HttpContext.Session.GetString("JWToken");
             //httpClient.DefaultRequestHeaders.Add("Authorization", token);
-            var restTask = httpClient.GetAsync("Room");
+            var restTask = httpClient.GetAsync("Room/getRoom");
             restTask.Wait();
 
             var result = restTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<IList<Room>>();
+                var readTask = result.Content.ReadAsAsync<IList<RoomVM>>();
                 readTask.Wait();
                 rooms = readTask.Result;
 
@@ -95,6 +96,25 @@ namespace Client.Controllers
             //httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var result = httpClient.DeleteAsync("Room/" + id).Result;
             return Json(result);
+        }
+        public JsonResult LoadRoomEmp()
+        {
+            IEnumerable<RoomVM> rooms = null;
+            //var token = HttpContext.Session.GetString("JWToken");
+            //httpClient.DefaultRequestHeaders.Add("Authorization", token);
+            var restTask = httpClient.GetAsync("Room/getRoomEmp");
+            restTask.Wait();
+
+            var result = restTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<IList<RoomVM>>();
+                readTask.Wait();
+                rooms = readTask.Result;
+
+            }
+            return Json(rooms, new Newtonsoft.Json.JsonSerializerSettings());
+
         }
     }
 }

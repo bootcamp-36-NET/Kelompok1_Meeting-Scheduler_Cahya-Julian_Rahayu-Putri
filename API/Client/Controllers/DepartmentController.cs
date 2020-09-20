@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -20,18 +19,18 @@ namespace Client.Controllers
 
         public IActionResult Index()
         {
-        //    if (HttpContext.Session.GetString("lvl") == "Admin")
-        //    {
+            //if (HttpContext.Session.GetString("lvl") == "Admin")
+            //{
             return View();
-        //    }
-        //    return Redirect("/notfound");
+            //}
+            //return Redirect("/notfound");
         }
 
         public JsonResult LoadDepart()
         {
             IEnumerable<Department> departments = null;
-            var token = HttpContext.Session.GetString("JWToken");
-            http.DefaultRequestHeaders.Add("Authorization", token);
+            //var token = HttpContext.Session.GetString("token");             //tambahan
+            //http.DefaultRequestHeaders.Add("Authorization", token);         //tambahan
             var resTask = http.GetAsync("department");  //departments nya ini dari si controller api
             resTask.Wait();
 
@@ -50,8 +49,7 @@ namespace Client.Controllers
             }
             return Json(departments);
         }
-
-        public IActionResult InsertOrUpdate(Department departments, string id)
+        public IActionResult InsertOrUpdate(Department departments, string id_merk)
         {
             try
             {
@@ -60,16 +58,17 @@ namespace Client.Controllers
                 var byteContent = new ByteArrayContent(buffer);
                 byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                var token = HttpContext.Session.GetString("JWToken");
-                http.DefaultRequestHeaders.Add("Authorization", token);
+                //var token = HttpContext.Session.GetString("token");                 //tambahan
+                //http.DefaultRequestHeaders.Add("Authorization", token);             //tambahan
+
                 if (departments.Id == null)
                 {
                     var result = http.PostAsync("department", byteContent).Result;
                     return Json(result);
                 }
-                else if (departments.Id == id)
+                else if (departments.Id == departments.Id)
                 {
-                    var result = http.PutAsync("department/" + id, byteContent).Result;
+                    var result = http.PutAsync("department/" + departments.Id, byteContent).Result;
                     return Json(result);
                 }
 
@@ -84,25 +83,28 @@ namespace Client.Controllers
         public JsonResult GetById(string id)
         {
             Department department = null;
-            var token = HttpContext.Session.GetString("JWToken");
-            http.DefaultRequestHeaders.Add("Authorization", token);
-            var restTask = http.GetAsync("department/" + id);
-            restTask.Wait();
-
-            var result = restTask.Result;
+            //var token = HttpContext.Session.GetString("token");             //tambahan
+            //http.DefaultRequestHeaders.Add("Authorization", token);         //tambahan
+            var resTask = http.GetAsync("department/" + id);
+            resTask.Wait();
+            var result = resTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
-                department = JsonConvert.DeserializeObject<Department>(readTask);
+                var getJson = JsonConvert.DeserializeObject(result.Content.ReadAsStringAsync().Result).ToString();
+                department = JsonConvert.DeserializeObject<Department>(getJson);
             }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
+            }
+
             return Json(department);
         }
 
-
         public JsonResult Delete(string id)
         {
-            var token = HttpContext.Session.GetString("JWToken");
-            http.DefaultRequestHeaders.Add("Authorization", token);
+            //var token = HttpContext.Session.GetString("token");                     //tambahan
+            //http.DefaultRequestHeaders.Add("Authorization", token);                 //tambahan
             var result = http.DeleteAsync("department/" + id).Result;
             return Json(result);
         }
