@@ -17,3 +17,12 @@
 - Wednesday (16/09):
 1. Added Register, Login, & Verify.(API Revised Edition)
 2. Added Register, Login, Verify, & Profile. (Client)
+
+- Thursday (17/09):
+1. Added Booking and Room (API & Client).
+2. Finished department and division.
+
+- Friday (18/09):
+1. Revised room (Client side).
+2. Added form submission for employee to submit their own meeting scheduler.
+3.
